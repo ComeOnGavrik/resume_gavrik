@@ -6,7 +6,7 @@ class Articles(models.Model):
     tittle = models.CharField('Название', max_length=50)
     anons = models.CharField('Анонс', max_length=240)
     full_text = models.TextField('Статья')
-    date = models.DateTimeField('Дата публикации')
+    date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='articles', null=True, default=None)
 
     def __str__(self):
