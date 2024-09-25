@@ -1,0 +1,28 @@
+{% extends 'main/layout.html' %}
+
+{% block tittle %} Новости на сайте {% endblock %}
+
+{% block content %}
+{% for message in messages %}
+<div class="message {{ message.tags }}">
+    {{ message }}
+</div>
+{% endfor %}
+<div class="features">
+    <h1>{{ tittle }}</h1>
+
+    {% if news %}
+    {% for el in news %}
+    <div class="alert alert-warning">
+        <h1>{{el.tittle}}</h1>
+        <p>{{el.anons}}</p>
+        <p>{{el.author}}</p>
+        <a href="{% url 'news-detail' el.id %}" class="btn btn-warning"> Читать детальнее </a>
+
+    </div>
+    {% endfor %}
+    {% else %}
+        <p>У вас нет записей</p>
+    {% endif %}
+</div>
+{% endblock %}

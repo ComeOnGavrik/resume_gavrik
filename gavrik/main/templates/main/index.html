@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+
+{% block tittle %} {{ tittle }} {% endblock %}
+
+{% block content %}
+
+<div class="features">
+    <h1>{{ tittle }}</h1>
+    {% if user.is_authenticated %}
+        <i class="fa fa-door-open"></i> <a href="{% url 'users:logout' %}"> Выйти </a> <i class="fa fa-door-open"></i>
+        <p>Привет красивый {{ user.username }} </p>
+    {% endif %}
+    <button class="btn btn-warning"> На страницу про нас </button>
+
+    {% for el in values %}
+    <p>{{ el }}</p>
+    {% endfor %}
+
+    {% for el in obj %}
+    <p>{{ el }}</p>
+    {% endfor %}
+
+
+</div>
+{% endblock %}

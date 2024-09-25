@@ -1,0 +1,14 @@
+{% extends 'main/layout.html' %}
+
+{% block tittle %} {{ article.tittle }} {% endblock %}
+
+{% block content %}
+<div class="features">
+    <h1>{{ article.tittle }}</h1>
+    <p>{{ article.date }}</p>
+    <p>{{ article.full_text }}</p>
+    <a href="{% url 'news-delete' article.id %}"  class="btn btn-danger">Удалить</a>
+    <a href="{% url 'news-update' article.id %}"  class="btn btn-warning">Редактировать</a>
+    <input type="button" onclick="history.back();"  class="btn btn-info" value="Назад"/>
+</div>
+{% endblock %}
