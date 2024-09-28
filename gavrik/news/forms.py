@@ -19,6 +19,6 @@ class ArticlesForm(ModelForm):
 
             "full_text": TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Полный текст228'
+                'placeholder': 'Полный текст'
             })
         }

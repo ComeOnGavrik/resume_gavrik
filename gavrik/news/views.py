@@ -11,7 +11,8 @@ from django.views.generic import DetailView, UpdateView, DeleteView, CreateView
 # Create your views here.
 def news_home(request):
     news = Articles.objects.order_by('-date')
-    return render(request, 'news/news_home.html', {'news': news} )
+    tittle = 'Новости на сайте'
+    return render(request, 'news/news_home.html', {'news': news, 'tittle': tittle})
 
 class NewsDetailView(DetailView):
     model = Articles
@@ -35,8 +36,8 @@ class AddNews(LoginRequiredMixin, CreateView):
     template_name = 'news/create.html'
     success_url = reverse_lazy('news_home')
 
-    def form_valid(self, form):
-        n = form.save(commit = False)
+    def form_valid(self, form1):
+        n = form1.save(commit = False)
         n.author = self.request.user
 
-        return super().form_valid(form)
+        return super().form_valid(form1)
