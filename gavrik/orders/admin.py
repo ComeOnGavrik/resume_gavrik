@@ -1,12 +1,18 @@
 from django.contrib import admin
 
-from orders.models import Order, ProductInOrder, Status
+from .models import Order, ProductInOrder, Status
+
+
+class ProductInOrderInline(admin.TabularInline):
+    model = ProductInOrder
+    extra = 0
 
 
 class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ('created', 'updated')
-    list_display = ['customer_name', 'customer_email', 'customer_phone', 'comments', 'status']
+    list_display = ['id', 'status', 'customer_name', 'customer_email', 'customer_phone', 'comments', 'status']
     search_fields = ['customer_name']
+    inlines = [ProductInOrderInline]
 
     class Meta:
         model = Order

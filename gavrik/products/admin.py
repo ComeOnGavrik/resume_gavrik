@@ -1,12 +1,17 @@
 from django.contrib import admin
 
-from products.models import Product, ProductImage
+from .models import Product, ProductImage
 
+
+class ProductImageInline(admin.TabularInline):
+    model = ProductImage
+    extra = 0
 
 class ProductAdmin(admin.ModelAdmin):
     readonly_fields = ('created', 'updated')
     list_display = ['id', 'name', 'description', 'is_active']
     search_fields = ['name']
+    inlines = [ProductImageInline]
 
     class Meta:
         model = Product
