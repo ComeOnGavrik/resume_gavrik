@@ -76,7 +76,7 @@ def product_in_order_post_save(sender, instance, created, **kwargs):
     for item in all_products_in_order:
         order_total_price += item.total_price
 
-    instance.order.total_price = order_total_price
+    instance.order.total_amount = order_total_price
     instance.order.save(force_update=True)
 
 
