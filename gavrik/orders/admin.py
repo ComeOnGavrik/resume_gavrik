@@ -10,7 +10,7 @@ class ProductInOrderInline(admin.TabularInline):
 
 class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ('created', 'updated')
-    list_display = ['id', 'status', 'customer_name', 'customer_email', 'customer_phone', 'comments', 'status']
+    list_display = ['id', 'total_amount', 'status', 'customer_name', 'customer_email', 'customer_phone', 'comments',]
     search_fields = ['customer_name']
     inlines = [ProductInOrderInline]
 
