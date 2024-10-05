@@ -1,10 +1,13 @@
-{% extends 'main/layout.html' %}
+{% extends 'shop/base.html' %}
+{% load static %}
 
 {% block tittle %} Магазик {% endblock %}
 
-{% block content %}
 
-<div class="features">
-    <h1>Здесь будет магазин </h1>
-</div>
+{% block content-shop %}
+
+        <div class="section-top">
+                <img src="{% static 'main/img/slidercity.jpg' %}" class="img-responsive">
+        </div>
+
 {% endblock %}
