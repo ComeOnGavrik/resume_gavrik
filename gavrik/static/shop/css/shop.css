@@ -4,22 +4,23 @@ body{
 }
 
 .section-top{
-    margin: 20px;
+    margin-bottom: 30px;
 }
 
 
 .product-item{
-    margin-top: 10px;
-    height: 200px;
+    margin-top: 14px;
+    height: flex;
     color: #fff;
     font-weight: 100;
     position: relative;
-    background:#212121;
+    background: #212121;
     border: 2px solid #B5B5B5;
-    border-radius: 10px; /* Закругляет углы обводки */
-    transition: transform 0.3s ease, border-color 0.3s ease; /* Объединяет переходы */
-    padding: 5px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    padding: 10px;
     text-align: center;
+    margin-bottom: 50px;
 }
 
 .product-item:hover {
@@ -30,4 +31,10 @@ body{
 .product-item:active {
     transform: scale(0.98);
     border-color: #FFA53D; /* Изменяет цвет обводки при нажатии */
+}
+
+.footer{
+    background: black;
+    color: white;
+    height: 200px;
 }
