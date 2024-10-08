@@ -1,0 +1,33 @@
+body{
+     background:#2c2c2c;
+     color: #fff;
+}
+
+.section-top{
+    margin: 20px;
+}
+
+
+.product-item{
+    margin-top: 10px;
+    height: 200px;
+    color: #fff;
+    font-weight: 100;
+    position: relative;
+    background:#212121;
+    border: 2px solid #B5B5B5;
+    border-radius: 10px; /* Закругляет углы обводки */
+    transition: transform 0.3s ease, border-color 0.3s ease; /* Объединяет переходы */
+    padding: 5px;
+    text-align: center;
+}
+
+.product-item:hover {
+    border: 3px solid #fff; /* Белая обводка при наведении */
+    transform: scale(1.03);
+}
+
+.product-item:active {
+    transform: scale(0.98);
+    border-color: #FFA53D; /* Изменяет цвет обводки при нажатии */
+}
