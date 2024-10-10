@@ -1,0 +1,13 @@
+
+<div class="col d-flex justify-content-center" >
+        <div class="product-item" >
+
+            <img src="{{ el.image.url }}" class="img-card">
+            <h6>{{ el.product.name}}</h6>
+            <p>{{ el.product.short_description }}</p>
+            <p>{{ el.product.price }} $</p>
+            {% if el.product.discount %}
+                <div class="discount-style"> {{ el.product.discount }} %</div>
+            {% endif %}
+        </div>
+ </div>
