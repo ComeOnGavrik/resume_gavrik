@@ -11,7 +11,7 @@ body{
 }
 
 
-.product-item{
+a .product-item{
     position: relative;
     max-width:270px;
     margin-top: 14px;
@@ -26,12 +26,12 @@ body{
     margin-bottom: 50px;
 }
 
-.product-item:hover {
+a .product-item:hover {
     border: 3px solid #fff; /* Белая обводка при наведении */
     transform: scale(1.03);
 }
 
-.product-item:active {
+a .product-item:active {
     transform: scale(0.98);
     border-color: #FFA53D; /* Изменяет цвет обводки при нажатии */
 }
@@ -77,4 +77,8 @@ footer{
     text-align: center;
     text-color: #000;
 
+}
+
+a {
+  text-decoration: none;
 }
