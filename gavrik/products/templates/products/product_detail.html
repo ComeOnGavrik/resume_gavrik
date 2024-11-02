@@ -4,6 +4,54 @@
 {% block tittle %} Детально {% endblock %}
 
 {% block content-shop %}
-    <h1>{{ product.product.name }} </h1>
-{% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+        {% for image in images %}
+            <img src="{{ image.image.url }}" alt="{{ image.product.name }}">
+        {% endfor %}
 
+        </div>
+        <div class="col-lg-6">
+            <h1 class="text-center">
+                {{ product.name }}
+            </h1>
+            <div class="">
+                <p>Price: {{ product.price }}</p>
+            </div>
+           <div>
+
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#description" aria-controls="home" role="tab" data-toggle="tab">Описание</a></li>
+                    <li role="presentation"><a href="#delivery" aria-controls="profile" role="tab" data-toggle="tab">Доставка</a></li>
+                    <li role="presentation"><a href="#selfship" aria-controls="messages" role="tab" data-toggle="tab">Самовывоз</a></li>
+                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">ЕЩЕ</a></li>
+                  </ul>
+
+                  <!-- Tab panes -->
+                  <div class="tab-content product-description-tabs">
+                    <div role="tabpanel" class="tab-pane active" id="description">
+                        <p>{{ product.description }}</p>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="delivery">
+                        <h3>Здесь инфо о доставке</h3>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="selfship">
+                        <p> Вы можете приехать за товаром в наш магаиз. Бельского 21</p>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="settings">Еще что-то</div>
+                  </div>
+
+           </div>
+        </div>
+    </div>
+</div>
+<!--    <h1> </h1>-->
+<!--    <p>{{ product.description }}</p>-->
+<!--    <p>{{ product.price }}</p>-->
+<!--    <p>{{ product.sale }}</p>-->
+<!--        {% for image in images %}-->
+<!--            <img src="{{ image.image.url }}" alt="{{ image.product.name }}">-->
+<!--        {% endfor %}-->
+{% endblock %}

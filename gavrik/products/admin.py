@@ -34,7 +34,7 @@ admin.site.register(Product, ProductAdmin)
 
 class ProductImageAdmin(admin.ModelAdmin):
     readonly_fields = ('created', 'updated')
-    list_display = ['product', 'image', 'is_active']
+    list_display = ['id', 'product', 'image', 'is_active']
     search_fields = ['product']
 
     class Meta:
