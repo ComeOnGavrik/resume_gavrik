@@ -46,7 +46,8 @@
            </div>
 <br>
             <div>
-                <form id="form-buying-product" class="form-inline" style="display: flex">
+                <form id="form-buying-product" class="form-inline" action="{% url 'shop:basket_adding' %}" style="display: flex">
+                    {% csrf_token %}
                     <div class="form-group">
                         <input type="number" class="form-control" name="number" id="number">
                     </div>
