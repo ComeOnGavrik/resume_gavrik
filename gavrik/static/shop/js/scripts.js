@@ -34,6 +34,13 @@ $(document).ready(function(){
                             cache: true,
                             success: function (data) {
                                 console.log("OK");
+                                console.log(data.products_total_nmb);
+                                if (data.products_total_nmb){
+                                    $('#basket_total_nmb').text("(" + data.products_total_nmb + ")");
+                                }
+                                else{
+                                    console.log("error_nmb")
+                                }
                             },
                             error: function(){
                                 console.log("error");

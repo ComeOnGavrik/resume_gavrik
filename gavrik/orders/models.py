@@ -84,6 +84,7 @@ post_save.connect(product_in_order_post_save, sender=ProductInOrder)
 
 
 class ProductInBasket(models.Model):
+    session_key = models.CharField(max_length=128, blank=True, null=True, default=None)
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='product_in_basket', null=True, default=None)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_in_basket', null=True, default=None)
     nmb = models.IntegerField(default=1)
@@ -99,3 +100,10 @@ class ProductInBasket(models.Model):
     class Meta:
         verbose_name = 'Товар в Корзине'
         verbose_name_plural = 'Товары в Корзине'
+
+    def save(self, *args, **kwargs):
+        price_per_item = self.product.price
+        self.price_per_item = price_per_item
+        self.total_price = int(self.nmb) * price_per_item
+
+        super(ProductInBasket, self).save(*args, **kwargs)
