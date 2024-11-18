@@ -37,7 +37,7 @@ class AddNews(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('news_home')
 
     def form_valid(self, form1):
-        n = form1.save(commit = False)
+        n = form1.save(commit=False)
         n.author = self.request.user
 
         return super().form_valid(form1)

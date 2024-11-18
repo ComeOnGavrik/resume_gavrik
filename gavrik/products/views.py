@@ -23,7 +23,4 @@ class ProductDetailView(DetailView):
             request.session.create()
             # Устанавливаем session_key в сессии
         request.session['session_key'] = request.session.session_key
-        print('---')
-        print(request.session.session_key)
-        print('---')
         return super().get(request, *args, **kwargs)

@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models.signals import post_save
 from products.models import Product
@@ -85,8 +86,12 @@ post_save.connect(product_in_order_post_save, sender=ProductInOrder)
 
 class ProductInBasket(models.Model):
     session_key = models.CharField(max_length=128, blank=True, null=True, default=None)
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='product_in_basket', null=True, default=None)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_in_basket', null=True, default=None)
+    author = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='basket', null=True,
+                               default=None)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='product_in_basket', null=True,
+                              default=None)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_in_basket', null=True,
+                                default=None)
     nmb = models.IntegerField(default=1)
     price_per_item = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)

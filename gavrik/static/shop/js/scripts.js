@@ -36,7 +36,11 @@ $(document).ready(function(){
                                 console.log("OK");
                                 console.log(data.products_total_nmb);
                                 if (data.products_total_nmb){
-                                    $('#basket_total_nmb').text("(" + data.products_total_nmb + ")");
+                                    $('#basket_total_nmb').text("( " + data.products_total_nmb + " )");
+                                    console.log(data.products);
+                                    $.each(data.products, function(k, v){
+                                        $('.basket-items ul').append('<li>' + v.product_name + ' ' +v.nmb+ ' шт. ' + v.price_per_item + '</li>' );
+                                    })
                                 }
                                 else{
                                     console.log("error_nmb")
@@ -46,7 +50,7 @@ $(document).ready(function(){
                                 console.log("error");
                             }
                         })
-        $('.basket-items ul').append('<li>' + product_name + ' ' +nmb+ ' шт. ' + product_price + '<a class="delete-item" href=""> X </a>'+ '</li>' );
+
     })
 
     function showingBasket(){
