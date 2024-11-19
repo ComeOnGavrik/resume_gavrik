@@ -12,10 +12,11 @@ def basket_adding(request):
     product_id = data.get("product_id")
     nmb = data.get("nmb")
 
-    user = request.user if request.user.is_authenticated else None
-
-    new_product, created = ProductInBasket.objects.get_or_create(session_key=session_key, product_id=product_id,
-                                                                 author=user, defaults={"nmb": nmb})
+    if request.user.is_authenticated:
+        new_product, created = ProductInBasket.objects.get_or_create(product_id=product_id, author=request.user, defaults={"nmb": nmb})
+    else:
+        new_product, created = ProductInBasket.objects.get_or_create(product_id=product_id, session_key=session_key,
+                                                                     defaults={"nmb": nmb})
     if not created:
         new_product.nmb += int(nmb)
         new_product.save(force_update=True)
