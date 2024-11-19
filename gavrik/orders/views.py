@@ -34,4 +34,4 @@ def basket_adding(request):
         product_dict["price_per_item"] = item.price_per_item
         product_dict["nmb"] = item.nmb
         return_dict["products"].append(product_dict)
-        return JsonResponse(return_dict)
+    return JsonResponse(return_dict)

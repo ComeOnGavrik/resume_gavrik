@@ -5,16 +5,12 @@ $(document).ready(function(){
 
     form.on('submit', function(e){
         e.preventDefault();
-        console.log('Test');
         var nmb = $('#number').val();
         console.log(nmb);
         var submit_btn = $('#submit_btn');
         var product_id = submit_btn.data("product_id");
         var product_name = submit_btn.data("product_name");
         var product_price = submit_btn.data("product_price")
-        console.log(product_id);
-        console.log(product_name);
-        console.log(product_price);
 
 
                  var data = {};
@@ -37,9 +33,11 @@ $(document).ready(function(){
                                 console.log(data.products_total_nmb);
                                 if (data.products_total_nmb){
                                     $('#basket_total_nmb').text("( " + data.products_total_nmb + " )");
+                                    console.log("Вывод словаря:");
                                     console.log(data.products);
+                                    $('.basket-items ul').empty();
                                     $.each(data.products, function(k, v){
-                                        $('.basket-items ul').append('<li>' + v.product_name + ' ' +v.nmb+ ' шт. ' + v.price_per_item + '</li>' );
+                                        $('.basket-items ul').append('<li>' + v.name + ' ' +v.nmb+ ' шт. ' + v.price_per_item + '</li>' );
                                     })
                                 }
                                 else{
