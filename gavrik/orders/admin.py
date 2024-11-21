@@ -47,7 +47,7 @@ admin.site.register(Status, StatusAdmin)
 
 class ProductInBasketAdmin(admin.ModelAdmin):
     readonly_fields = ('created', 'updated')
-    list_display = ['author','nmb', 'session_key', 'product', 'is_active']
+    list_display = ['author', 'id', 'nmb', 'session_key', 'product', 'is_active']
     search_fields = ['order']
 
     class Meta:

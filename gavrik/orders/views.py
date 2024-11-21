@@ -11,6 +11,7 @@ def basket_adding(request):
     data = request.POST
     product_id = data.get("product_id")
     nmb = data.get("nmb")
+    is_delete = data.get("is_delete")
 
     if request.user.is_authenticated:
         new_product, created = ProductInBasket.objects.get_or_create(product_id=product_id, author=request.user, defaults={"nmb": nmb})
@@ -31,6 +32,7 @@ def basket_adding(request):
     return_dict["products"] = list()
     for item in products_in_basket:
         product_dict = dict()
+        product_dict["id"] = item.id
         product_dict["name"] = item.product.name
         product_dict["price_per_item"] = item.price_per_item
         product_dict["nmb"] = item.nmb
