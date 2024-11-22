@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+//    var data = {};
+//    var csrf_token = $('#form-csrf [name="csrfmiddlewaretoken"]').val();
+//    data["csrfmiddlewaretoken"] = csrf_token;
+
     var form = $('#form-buying-product');
     console.log(form);
 
@@ -9,8 +13,12 @@ $(document).ready(function(){
         data.product_id = product_id;
         data.nmb = nmb;
 
-        var csrf_token = $('#form-buying-product [name="csrfmiddlewaretoken"]').val();
+        var csrf_token = $('#form-csrf [name="csrfmiddlewaretoken"]').val();
         data["csrfmiddlewaretoken"] = csrf_token;
+
+        if (is_delete){
+            data["is_delete"] = true
+        }
 
         var url = form.attr("action");
 
@@ -24,7 +32,7 @@ $(document).ready(function(){
                     success: function (data) {
                         console.log("OK");
                         console.log(data.products_total_nmb);
-                        if (data.products_total_nmb){
+                        if (data.products_total_nmb || data.products_total_nmb == 0){
                             $('#basket_total_nmb').text("( " + data.products_total_nmb + " )");
                             console.log("Вывод словаря:");
                             console.log(data.products);
@@ -81,6 +89,8 @@ $(document).ready(function(){
     $(document).on('click', '.delete-item', function(e) {
         e.preventDefault();
         product_id = $(this).data("product_id");
+        console.log("Вывод в консоль при удалении id=" + product_id)
+        nmb = 0;
         basketUpdating(product_id, nmb, is_delete=true);
         showingBasket();
 
