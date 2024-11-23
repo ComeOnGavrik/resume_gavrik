@@ -7,8 +7,10 @@ $(document).ready(function(){
     var form = $('#form-buying-product');
     console.log(form);
 
-    function basketUpdating(product_id, nmb, is_delete){
+    var form1 = $('#form-csrf');
 
+    function basketUpdating(product_id, nmb, is_delete){
+        console.log("Вызвалась ф-ция basketUpdating")
         var data = {};
         data.product_id = product_id;
         data.nmb = nmb;
@@ -21,6 +23,11 @@ $(document).ready(function(){
         }
 
         var url = form.attr("action");
+        if (!url){
+            console.log("сработал иф")
+             url = form1.attr("action");
+        }
+        console.log("Вывод юрл: " + url)
 
         console.log(data)
 
