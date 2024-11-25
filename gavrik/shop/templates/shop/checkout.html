@@ -1,0 +1,20 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block tittle %} Корзина {% endblock %}
+
+{% block content-shop %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 style="text-align: center">Товары в корзине</h1>
+            <p style="text-align: center"> Общая стоимсть</p>
+            <ul>
+                {% for product in products_in_basket %}
+                    <li style="">{{product.product.name}} - {{ product.price_per_item }} * {{ product.nmb }} = {{ product.total_price }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
