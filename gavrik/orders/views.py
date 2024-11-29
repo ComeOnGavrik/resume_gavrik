@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 
 from .models import ProductInBasket
+from products.models import ProductImage
 
 
 def basket_adding(request):
@@ -45,3 +46,27 @@ def basket_adding(request):
         product_dict["nmb"] = item.nmb
         return_dict["products"].append(product_dict)
     return JsonResponse(return_dict)
+
+
+def checkout(request):
+    # product_images = ProductImage.objects.filter(is_active=True, is_main=True, product__is_active=True)
+    if not request.user.is_authenticated:
+
+        session_key = request.session.session_key
+        if not session_key:
+            request.session.cycle_key()
+
+        products_in_basket = ProductInBasket.objects.filter(session_key=session_key, is_active=True)
+    else:
+        products_in_basket = ProductInBasket.objects.filter(author=request.user, is_active=True)
+
+    products_in_basket_ph_ids = []
+    for el in products_in_basket:
+        products_in_basket_ph_ids.append(el.product.id)
+
+    products_in_basket_ph = ProductImage.objects.filter(is_active=True, product__is_active=True,
+                                                        product__id__in=products_in_basket_ph_ids)
+
+    print(products_in_basket_ph)
+
+    return render(request, 'shop/checkout.html', locals())

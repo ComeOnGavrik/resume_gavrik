@@ -4,17 +4,74 @@
 {% block tittle %} Корзина {% endblock %}
 
 {% block content-shop %}
+<h1 style="text-align: center">Товары в корзине</h1>
 <div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 style="text-align: center">Товары в корзине</h1>
-            <p style="text-align: center"> Общая стоимсть</p>
-            <ul>
-                {% for product in products_in_basket %}
-                    <li style="">{{product.product.name}} - {{ product.price_per_item }} * {{ product.nmb }} = {{ product.total_price }}</li>
-                {% endfor %}
-            </ul>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
+        {% for el in products_in_basket %}
+        <div style="border: 1px solid;">
+            {{el.author}}
+            {{el.product.name}}<br>
+
+
+                        {% for ph in products_in_basket_ph %}
+                            {% if el.product.id == ph.product.id %}
+                            <img src="{{ ph.image.url }}" class="img-card">
+                        {% endif %}
+
+
+            {% endfor %}
         </div>
+        <br>
+                                                                            <!--        <a href="{% url 'shop:product_detail' el.product.id %}">-->
+
+                                                                            <!--            <div class="col d-flex justify-content-center">-->
+                                                                            <!--                <div class="product-item">-->
+
+                                                                            <!--                    <img src="{{ el.image.url }}" class="img-card">-->
+                                                                            <!--                    <p>{{ el.product.short_description }}</p>-->
+                                                                            <!--                    <p>{{ el.product.price }} $</p>-->
+                                                                            <!--                    {% if el.product.discount %}-->
+                                                                            <!--                    <div class="discount-style"> {{ el.product.discount }} %</div>-->
+                                                                            <!--                    {% endif %}-->
+                                                                            <!--                </div>-->
+                                                                            <!--            </div>-->
+                                                                            <!--        </a>-->
+        {% endfor %}
+
     </div>
 </div>
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-lg-12">-->
+
+<!--            {% for el in products_in_basket_ph %}-->
+<!--            <a href="{% url 'shop:product_detail' el.product.id %}">-->
+
+<!--                <div class="col d-flex justify-content-center">-->
+<!--                    <div class="product-item">-->
+
+<!--                        <img src="{{ el.image.url }}" class="img-card">-->
+<!--                        <h6>{{el}}</h6>-->
+<!--                        <p>{{ el.product.short_description }}</p>-->
+<!--                        <p>{{ el.product.price }} $</p>-->
+<!--                        {% if el.product.discount %}-->
+<!--                        <div class="discount-style"> {{ el.product.discount }} %</div>-->
+<!--                        {% endif %}-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 {% endblock %}
+
+<!--name = models.CharField(max_length=64, blank=True, null=True, default=None)-->
+<!--    description = models.TextField(blank=True, null=True, default=None)-->
+<!--    short_description = models.TextField(max_length=32, blank=True, null=True, default=None)-->
+<!--    price = models.DecimalField(max_digits=10, decimal_places=2, default=0)-->
+<!--    discount = models.IntegerField(default=0)-->
+<!--    category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, related_name='product', null=True, default=None)-->
+<!--    is_active = models.BooleanField(default=True)-->
+<!--    created = models.DateTimeField(auto_now_add=True, auto_now=False)-->
+<!--    updated = models.DateTimeField(auto_now_add=False, auto_now=True)-->

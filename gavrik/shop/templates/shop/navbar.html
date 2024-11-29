@@ -27,7 +27,7 @@
                     <li class="nav-item" >
 
                         <div class="basket-container">
-                          <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i>&nbsp;Корзина <span id="basket_total_amount"></span>
+                          <a class="nav-link" href="{% url 'shop:checkout' %}"><i class="fa-solid fa-cart-shopping"></i>&nbsp;Корзина <span id="basket_total_amount"></span>
                               <span id="basket_total_nmb">
                                   {% if products_total_nmb %}
                                     ( {{ products_total_nmb }} )

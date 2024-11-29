@@ -76,16 +76,15 @@ $(document).ready(function(){
         $('.basket-items').toggleClass('hidden');
     }
 
-    $('.basket-container').on('click', function(e) {
-        e.preventDefault();
+//    $('.basket-container').on('click', function(e) {
+//        showingBasket();
+//    })
+
+    $('.basket-container').mouseover(function() {
         showingBasket();
     })
 
-//    $('.basket-container').mouseover(function() {
-//        showingBasket();
-//    })
-//
-//
+
 //     $('.basket-container').mouseout(function() {
 //        $('.basket-items').addClass('hidden');
 //    })
