@@ -64,7 +64,7 @@ def checkout(request):
     for el in products_in_basket:
         products_in_basket_ph_ids.append(el.product.id)
 
-    products_in_basket_ph = ProductImage.objects.filter(is_active=True, product__is_active=True,
+    products_in_basket_ph = ProductImage.objects.filter(is_active=True, product__is_active=True, is_main=True,
                                                         product__id__in=products_in_basket_ph_ids)
 
     print(products_in_basket_ph)

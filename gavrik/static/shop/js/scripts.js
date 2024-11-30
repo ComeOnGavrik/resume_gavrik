@@ -102,4 +102,26 @@ $(document).ready(function(){
 
     })
 
+    function calculatingBasketAmount(){
+        var total_order_amount = 0;
+        $('.total-product-in-basket-amount').each(function(){
+            console.log(parseFloat($(this).text().replace(',', '.')));
+            total_order_amount += parseFloat($(this).text().replace(',', '.'));
+        })
+        total_order_amount = total_order_amount.toFixed(2)
+        $('#total_order_amount').text(total_order_amount)
+        console.log('общая стоимость '+total_order_amount);
+    };
+
+    $(document).on('change', ".product-in-basket-nmb", function(){
+        var current_nmb = $(this).val();
+        var current_tr = $(this).closest('tr');
+        var current_price = parseFloat(current_tr.find('.product-price').text().replace(',', '.')); // ТУТ БУДЕТ ПРОБЛЕМА С ЗАПЯТОЙ И ТОЧКОЙ
+        var total_amount = current_nmb*current_price
+        current_tr.find('.total-product-in-basket-amount').text(total_amount)
+        calculatingBasketAmount();
+    })
+
+    calculatingBasketAmount()
+
 });
