@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(to right, #f0f4f8, #e2e8f0);
+    color: #333;
+}
+
+.container {
+    width: 100%;
+    max-width: 95%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: nowrap; /* Без переноса строк для фиксирования */
+}
+
+.row {
+    display: flex;
+    flex: 1; /* Занимает всю доступную ширину */
+}
+
+.card1 {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 20px;
+}
+
+.card2 {
+    position: fixed;
+    right: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 48%;
+    min-height: 90%;
+    transition: transform 0.7s, box-shadow 0.7s;
+}
+
+.card1:hover {
+    transform: translateY(5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card2:hover {
+    transform: translateY(25px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+header {
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #007BFF;
+}
+
+h2 {
+    color: #0056b3;
+    margin: 15px 0 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #e7f3fe;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+li:hover {
+    background: #cfe2ff;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #007BFF;
+    color: white;
+    border-radius: 0 0 10px 10px;
+    margin-top: 20px;
+}
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0056b3;
+}

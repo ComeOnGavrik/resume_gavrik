@@ -72,4 +72,7 @@ form{
     width:500px;
     margin-top: 50px;
 }
-
+a {
+    color: #fff;
+    text-decoration: none;
+}
