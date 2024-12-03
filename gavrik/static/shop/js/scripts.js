@@ -116,7 +116,7 @@ $(document).ready(function(){
     $(document).on('change', ".product-in-basket-nmb", function(){
         var current_nmb = $(this).val();
         var current_tr = $(this).closest('tr');
-        var current_price = parseFloat(current_tr.find('.product-price').text().replace(',', '.')); // ТУТ БУДЕТ ПРОБЛЕМА С ЗАПЯТОЙ И ТОЧКОЙ
+        var current_price = parseFloat(current_tr.find('.product-price').text().replace(',', '.'));
         var total_amount = current_nmb*current_price
         current_tr.find('.total-product-in-basket-amount').text(total_amount)
         calculatingBasketAmount();

@@ -22,7 +22,9 @@ class Status(models.Model):
 
 class Order(models.Model):
     total_amount = models.DecimalField(max_digits=10, decimal_places=2,
-                                       default=0)  # total price dor all products in order
+                                       default=0)
+    customer = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='customer', null=True,
+                                 default=None)
     customer_name = models.CharField(max_length=64, blank=True, null=True, default=None)
     customer_email = models.EmailField(blank=True, null=True, default=None)
     customer_phone = models.CharField(max_length=13, blank=True, null=True, default='+375')
@@ -64,7 +66,7 @@ class ProductInOrder(models.Model):
     def save(self, *args, **kwargs):
         price_per_item = self.product.price
         self.price_per_item = price_per_item
-        self.total_price = self.nmb * price_per_item
+        self.total_price = float(self.nmb) * float(price_per_item)
 
         super(ProductInOrder, self).save(*args, **kwargs)
 

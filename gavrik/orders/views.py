@@ -1,9 +1,10 @@
 # views.py
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-from .models import ProductInBasket
+from .models import ProductInBasket, Order, Status, ProductInOrder
 from products.models import ProductImage
+from .forms import CheckoutContactsForm
 
 
 def basket_adding(request):
@@ -50,8 +51,9 @@ def basket_adding(request):
 
 def checkout(request):
     # product_images = ProductImage.objects.filter(is_active=True, is_main=True, product__is_active=True)
+    print(request.user)
+    form = CheckoutContactsForm(request.POST or None)
     if not request.user.is_authenticated:
-
         session_key = request.session.session_key
         if not session_key:
             request.session.cycle_key()
@@ -59,6 +61,7 @@ def checkout(request):
         products_in_basket = ProductInBasket.objects.filter(session_key=session_key, is_active=True)
     else:
         products_in_basket = ProductInBasket.objects.filter(author=request.user, is_active=True)
+        # form.user_name = request.user Автозаполнение полей!!!
 
     products_in_basket_ph_ids = []
     for el in products_in_basket:
@@ -67,6 +70,34 @@ def checkout(request):
     products_in_basket_ph = ProductImage.objects.filter(is_active=True, product__is_active=True, is_main=True,
                                                         product__id__in=products_in_basket_ph_ids)
 
-    print(products_in_basket_ph)
+    if request.POST:
+        print('______________________TEST')
+        print(request.POST)
+        data = request.POST
+        if form.is_valid():
+            print("yes")
+            order = Order.objects.create(customer=request.user, customer_name=form.cleaned_data["user_name"],
+                                         customer_phone=form.cleaned_data["user_phone"], status=Status.objects.all()[0])
 
+            for name, value in data.items():
+                if name.startswith("product_in_basket_el_"):
+                    id_el = name.split("product_in_basket_el_")
+                    print(id_el[1], '---', value)
+                    prod = ProductInBasket.objects.get(id=id_el[1])
+                    prod.nmb = value
+                    prod.save(force_update=True)
+                    product_in_order = ProductInOrder.objects.create(order=order, product=prod.product, nmb=value)
+                                                                                    # order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='product_in_oder', null=True,
+                                                                                    #                          default=None)
+                                                                                    # product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_in_oder', null=True,
+                                                                                    #                             default=None)
+                                                                                    # nmb = models.IntegerField(default=1)
+                                                                                    # price_per_item = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+                                                                                    # total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)  # price*nmb
+                                                                                    # is_active = models.BooleanField(default=True)
+                                                                                    # created = models.DateTimeField(auto_now_add=True, auto_now=False)
+                                                                                    # updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+            return redirect('shop_home')
+        else:
+            print("mistake")
     return render(request, 'shop/checkout.html', locals())
