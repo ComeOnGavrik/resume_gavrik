@@ -12,7 +12,13 @@
 
 </head>
 <body>
-    <div class="container overflow-hidden">
+    <div class="container">
+        <div class="navbutton hidden">
+            <button class="btn btn-warning" style="
+            width: 92%;
+            margin-top: 1rem;
+"> обо мне </button>
+        </div>
         <div class="row">
             {% include 'main/card1.html' %}
             {% include 'main/card2.html' %}
@@ -22,4 +28,9 @@
                 <footer>
                     <p>© 2024 Техническое задание для интернет-магазина. Все права защищены.</p>
                 </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'main/js/scripts.js' %}"></script>
+
 </html>

@@ -25,6 +25,7 @@ body {
 }
 
 .card1 {
+    width: 48%;
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -40,7 +41,7 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 48%;
-    min-height: 90%;
+    height: 90%;
     transition: transform 0.7s, box-shadow 0.7s;
 }
 
@@ -50,7 +51,7 @@ body {
 }
 
 .card2:hover {
-    transform: translateY(25px);
+    transform: translateY(15px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -75,6 +76,8 @@ ul {
 }
 
 li {
+    border: 1px solid;
+    border-color: #b2b2b2;
     background: #e7f3fe;
     margin: 5px 0;
     padding: 10px;
@@ -104,3 +107,30 @@ a {
 a:hover {
     color: #0056b3;
 }
+
+
+@media (max-width: 768px) {
+    .card1 {
+        width: 100%;
+        margin-top: 4rem;
+
+    }
+    .card2 {
+        margin-top: 4rem;
+        width: 100%;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        padding: 20px;
+        position: unset;
+    }
+
+}
+
+.hidden { display: none; }
+
+.navbutton {
+    width: 100%;
+    position: absolute;
+    }
