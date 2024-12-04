@@ -16,6 +16,7 @@
         <img src="{% static 'main/img/logo_nike.png' %}" alt="logo">
         <span class="logo">NIKE</span>
         <ul>
+            <a href="admin/"> <li><i class="fa-solid fa-wrench"></i> Админка  </li> </a>
             <a href="{% url 'reference' %}"> <li><i class="fa-solid fa-wrench"></i> Тех задание  </li> </a>
             <a href="{% url 'users:login' %}"> <li><i class="fa fa-door-open"></i> login  </li> </a>
             <a href="{% url 'users:logout' %}"> <li><i class="fa fa-door-closed"></i> logout </li> </a>

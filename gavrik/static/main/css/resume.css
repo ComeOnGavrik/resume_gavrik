@@ -97,8 +97,8 @@ footer {
 
 a {
     color: #007BFF;
-    text-decoration: none;
     transition: color 0.3s;
+    text-decoration: none;
 }
 
 a:hover {
