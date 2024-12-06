@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
 </head>
 <body>
+<button id="toggleMenu"><i class="fa-solid fa-bars"></i></button>
 
 <div class="sidenav" >
     <img src="{% static 'main/img/logo_nike.png' %}" alt="logo">
@@ -34,7 +35,6 @@
 </div>
 
 <div class="main">
-    <button id="toggleMenu"><p>_</p></button>
     {% block content %}
     {% endblock %}
 </div>
