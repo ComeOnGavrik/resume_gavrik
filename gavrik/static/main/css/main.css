@@ -1,26 +1,51 @@
 body{
      background:#2c2c2c;
 }
-
-aside{
-      float: left;
-      background: #181818;
-      width: 15%;
-      padding: 2.5%;
-      height: 100vh;
-      color: #fff;
-      border-right: 5px solid #4d4d4d
+.sidenav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 20px;
+            border-right: 3px solid #c6c6c6;
+            transition: transform 0.3s ease; /* Плавный переход */
+}
+.sidenav.show {
+    transform: translateX(250px); /* Выдвигаем меню */
 }
 
-aside img {
+.sidenav a {
+            padding: 6px 8px 6px 47px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+}
+
+.sidenav a:hover {
+            color: #eb5959;
+            text-decoration: none;
+            transform: scale(1.05);
+}
+
+.main {
+    margin-left: 250px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+.sidenav img {
      width: 120px;
-     float:left;
+
      position: relative;
-     top: -50px;
-    right: -20px;
+
+    right: -20%;
 }
 
-aside .logo{
+.sidenav .logo{
     font-size: 30px;
     margin-left: 10px;
     font-weight: bold;
@@ -29,42 +54,19 @@ aside .logo{
     right: -20px;
 }
 
-aside h3{
-    margin-top: 30px;
-    font-size: 28px;
-}
-
-aside ul{ list-style:none}
-aside ul li {
-   color: #fff;
-   display: block;
-   margin-top: 20px;
-   transition: transform .6s ease;
-}
-
-aside ul li:hover, aside ul a:hover{
-    color: #eb5959;
-    text-decoration: none;
-    transform: scale(1.05);
-}
-
-main .features{
+.features{
     float:left;
     color: #fff;
-    margin-top: 100px;
+    margin-top: 30px;
     text-align: center;
-    width:75%;
+    width:100%;
 }
 
 main .features h1 {font-size: 50px;}
 main .features p{max-width: 400px; margin: 20px auto}
 
 .alert-warning {
-    float: left;
-    clear: both;
-    width: 400px;
-    margin: 20px 34%;
-    text-align: left;
+    margin: 2% 35%;
 }
 
 form{
@@ -72,7 +74,56 @@ form{
     width:500px;
     margin-top: 50px;
 }
-a {
+
+@media screen and (max-width: 960px) {
+    .sidenav {
+        display: none; /* Уменьшаем ширину */
+    }
+    .sidenav a {
+        font-size: 18px; /* Меньший шрифт */
+    }
+    .sidenav img {
+        width: 80px; /* Уменьшаем логотип */
+    }
+    .main {
+    margin-left: 0px; /* Same as the width of the sidenav */
+    font-size: 22px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+    }
+}
+@media screen and (max-width: 1270px) {
+    .alert-warning {
+        margin: 2% 15%;
+    }
+}
+@media screen and (min-width: 961px) {
+    #toggleMenu {
+        display: none;
+    }
+}
+.btn-info {
+    background-color: #17a2b8; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    border: none; /* Убираем рамку */
+    border-radius: 5px; /* Скругленные углы */
+}
+
+.btn-info:hover {
+    background-color: #138496; /* Цвет при наведении */
+}
+
+#toggleMenu {
+    background-color: #007bff;
     color: #fff;
-    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    z-index:2;
+}
+#toggleMenu:hover {
+    background-color: #0056b3;
 }

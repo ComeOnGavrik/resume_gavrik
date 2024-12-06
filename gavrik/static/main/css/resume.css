@@ -43,6 +43,27 @@ body {
     width: 48%;
     height: 90%;
     transition: transform 0.7s, box-shadow 0.7s;
+    overflow-y: auto;
+}
+.card2::-webkit-scrollbar {
+    width: 12px; /* Ширина вертикальной полосы прокрутки */
+}
+
+/* Полоса прокрутки (дорожка) */
+.card2::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Цвет дорожки */
+    border-radius: 10px; /* Закругление углов */
+}
+
+/* Ползунок (thumb) */
+.card2::-webkit-scrollbar-thumb {
+    background: #007BFF; /* Цвет ползунка */
+    border-radius: 10px; /* Закругление углов */
+}
+
+/* Ползунок при наведении */
+.card2::-webkit-scrollbar-thumb:hover {
+    background: #0056b3; /* Цвет ползунка при наведении */
 }
 
 .card1:hover {
@@ -107,7 +128,6 @@ a {
 a:hover {
     color: #0056b3;
 }
-
 
 @media (max-width: 768px) {
     .card1 {

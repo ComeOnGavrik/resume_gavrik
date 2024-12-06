@@ -125,3 +125,12 @@ $(document).ready(function(){
     calculatingBasketAmount()
 
 });
+
+document.getElementById('toggleMenu').addEventListener('click', function() {
+    const sidenav = document.querySelector('.sidenav');
+    if (sidenav.style.display === 'none' || sidenav.style.display === '') {
+        sidenav.style.display = 'block';
+    } else {
+        sidenav.style.display = 'none';
+    }
+});
