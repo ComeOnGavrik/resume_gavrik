@@ -5,10 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Устанавливаем начальное состояние меню
 
     toggleButton.addEventListener('click', function() {
-        if (sidenav.style.display === 'none' || sidenav.style.display === '') {
-            sidenav.style.display = 'block'; // Показываем меню
-        } else {
-            sidenav.style.display = 'none';  // Скрываем меню
-        }
+        sidenav.classList.toggle('show'); // Переключаем класс
+
     });
 });
