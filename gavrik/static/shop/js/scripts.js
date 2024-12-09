@@ -1,8 +1,12 @@
 $(document).ready(function(){
+     $('#number').on('input', function() {
+                this.value = this.value.replace(/[^0-9]/g, ''); // Оставляет только цифры
+            });
 
-//    var data = {};
-//    var csrf_token = $('#form-csrf [name="csrfmiddlewaretoken"]').val();
-//    data["csrfmiddlewaretoken"] = csrf_token;
+     $('#user_phone').on('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, ''); // Оставляет только цифры
+
+        });
 
     var form = $('#form-buying-product');
     console.log(form);
@@ -126,11 +130,22 @@ $(document).ready(function(){
 
 });
 
-document.getElementById('toggleMenu').addEventListener('click', function() {
-    const sidenav = document.querySelector('.sidenav');
-    if (sidenav.style.display === 'none' || sidenav.style.display === '') {
-        sidenav.style.display = 'block';
-    } else {
-        sidenav.style.display = 'none';
-    }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const swiper = new Swiper('.swiper-container', {
+        // Настройки слайдера
+        loop: true, // Зацикливание
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true, // Кликабельные точки
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+            delay: 300000, // Автопрокрутка каждые 3 секунды
+            disableOnInteraction: false, // Продолжать автоматическую прокрутку
+        },
+    });
 });

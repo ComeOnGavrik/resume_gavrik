@@ -6,11 +6,23 @@
 {% block content-shop %}
 <div class="container">
     <div class="row">
-        <div class="col-lg-6">
-        {% for image in images %}
-            <img src="{{ image.image.url }}" alt="{{ image.product.name }}">
-        {% endfor %}
 
+        <div class="col-lg-6">
+            <div class="otstup"></div>
+            <div class="product-gallery">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        {% for image in images %}
+                            <div class="swiper-slide"><img src="{{ image.image.url }}" alt="{{ image.product.name }}"></div>
+                        {% endfor %}
+                    </div>
+                        <!-- Добавляем кнопки навигации -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                        <!-- Добавляем пагинацию -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
         </div>
         <div class="col-lg-6">
             <h1 class="text-center">
@@ -19,18 +31,22 @@
             <div class="">
                 <p>Price: {{ product.price }}</p>
             </div>
-           <div>
+            <div>
 
-                  <!-- Nav tabs -->
-                  <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#description" aria-controls="home" role="tab" data-toggle="tab">Описание</a></li>
-                    <li role="presentation"><a href="#delivery" aria-controls="profile" role="tab" data-toggle="tab">Доставка</a></li>
-                    <li role="presentation"><a href="#selfship" aria-controls="messages" role="tab" data-toggle="tab">Самовывоз</a></li>
-                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">ЕЩЕ</a></li>
-                  </ul>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#description" aria-controls="home" role="tab"
+                                                              data-toggle="tab">Описание</a></li>
+                    <li role="presentation"><a href="#delivery" aria-controls="profile" role="tab" data-toggle="tab">Доставка</a>
+                    </li>
+                    <li role="presentation"><a href="#selfship" aria-controls="messages" role="tab" data-toggle="tab">Самовывоз</a>
+                    </li>
+                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">ЕЩЕ</a>
+                    </li>
+                </ul>
 
-                  <!-- Tab panes -->
-                  <div class="tab-content product-description-tabs">
+                <!-- Tab panes -->
+                <div class="tab-content product-description-tabs">
                     <div role="tabpanel" class="tab-pane active" id="description">
                         <p>{{ product.description }}</p>
                     </div>
@@ -41,28 +57,46 @@
                         <p> Вы можете приехать за товаром в наш магаиз. Бельского 21</p>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="settings">Еще что-то</div>
-                  </div>
+                </div>
 
-           </div>
-<br>
+            </div>
+            <br>
             <div>
-                <form id="form-buying-product" class="form-inline" action="{% url 'shop:basket_adding' %}" style="display: flex">
+                <form id="form-buying-product" class="form-inline" action="{% url 'shop:basket_adding' %}"
+                      style="display: flex">
                     {% csrf_token %}
                     <div class="form-group">
-                        <input type="number" class="form-control" name="number" id="number">
+                        <input type="number" class="form-control" name="number" id="number" min="1" value="1">
                     </div>
-                        <div class="form-group">
-                            <button type="submit"  id="submit_btn" class="btn btn-success btn-buy"
-                                data-product_id = "{{ product.id }}"
-                                data-product_name = "{{ product.name }}"
-                                data-product_price = "{{ product.price }}">
-                                Купить
-                            </button>
-                        </div>
+                    <div class="form-group">
+                        <button type="submit" id="submit_btn" class="btn btn-success btn-buy"
+                                data-product_id="{{ product.id }}"
+                                data-product_name="{{ product.name }}"
+                                data-product_price="{{ product.price }}">
+                            Купить
+                        </button>
+                    </div>
                 </form>
 
             </div>
+            <br>
         </div>
     </div>
 </div>
+<div class="section-delivery">
+    <div>
+        <h3> Небольшой пробел :) </h3>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-lg12"><h1 class="text-center"> Может вам понравиться </h1></div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
+        {% for el in cards %}
+        {% include 'shop/product_item.html' %}
+        {% endfor %}
+
+    </div>
+</div>
+
 {% endblock %}

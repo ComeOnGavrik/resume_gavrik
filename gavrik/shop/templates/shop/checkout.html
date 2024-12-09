@@ -34,7 +34,7 @@
                         <td> {{el.product.name}}</td>
 
                         <td>
-                            <input class="product-in-basket-nmb" value="{{ el.nmb }}" type="number"
+                            <input class="product-in-basket-nmb" value="{{ el.nmb }}" type="number" id="number"
                                    name="product_in_basket_el_{{ el.id }}">
                         </td>
 
@@ -68,11 +68,13 @@
             <div class="col-lg-6">
                 <div class="form-group">
                     <label>Имя</label>
-                    <input type="Text" class="form-control" name="{{ form.user_name.html_name }}" style="width: 30%; align: right" value="{{user.first_name}}">
+                    <input type="Text" class="form-control" name="{{ form.user_name.html_name }}" style="width: 30%;
+                     align: right" value="{{user.first_name}}" maxlength="32">
                 </div>
                 <div class="form-group">
                     <label>Phone number</label>
-                    <input type="number" class="form-control" value="375" name="{{form.user_phone.html_name}}" style="width: 30%">
+                    <input type="text" class="form-control" value="375" name="{{form.user_phone.html_name}}"
+                           style="width: 30%" id="user_phone">
                 </div>
             </div>
         </div>

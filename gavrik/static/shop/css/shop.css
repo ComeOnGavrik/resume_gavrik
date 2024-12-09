@@ -122,6 +122,8 @@ footer{
     border: 1px solid #ddd;
     border-top: none;
     border-radius: 0 0 4px 4px;
+    max-height: 450px;
+    overflow-y: auto;
 }
 
 .basket-items {
@@ -130,3 +132,61 @@ footer{
 }
 
 .hidden { display: none; }
+
+.product-gallery {
+    border: 1px solid #ddd;
+    width: 100%; /* Ширина 100% от родительского контейнера */
+    max-width: 100%; /* Убедитесь, что не превышает ширину экрана */
+    height: 474px;
+    border-radius: 5px;
+}
+
+.swiper-container {
+    width: 100%; /* Ширина слайдера 100% */
+    height: 400px; /* Высота слайдера (можете изменить по желанию) */
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    height: auto; /* Автоматическая высота для соблюдения пропорций */
+    border-radius: 10px; /* Скругленные углы */
+}
+
+.swiper-slide {
+    opacity: 0; /* Делаем слайды полупрозрачными по умолчанию */
+    transition: opacity 0.3s ease; /* Плавный переход при смене слайдов */
+}
+
+.swiper-slide-active {
+    opacity: 1; /* Центральный слайд полностью видимый */
+}
+
+.otstup{
+    height: 95px;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    color: white; /* Цвет кнопок */
+    width: 40px; /* Ширина кнопок */
+    height: 40px; /* Высота кнопок */
+    top: 50%; /* Центрируем по вертикали */
+    transform: translateY(-50%); /* Центрирование по вертикали */
+}
+
+.swiper-button-next {
+    right: 10px; /* Отступ от правого края контейнера */
+}
+
+.swiper-button-prev {
+    left: 10px; /* Отступ от левого края контейнера */
+}
+
+.swiper-pagination {
+    bottom: 10px; /* Отступ от нижнего края контейнера */
+    text-align: center; /* Центрирование пагинации */
+}

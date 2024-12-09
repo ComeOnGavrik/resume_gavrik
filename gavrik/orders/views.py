@@ -87,16 +87,7 @@ def checkout(request):
                     prod.nmb = value
                     prod.save(force_update=True)
                     product_in_order = ProductInOrder.objects.create(order=order, product=prod.product, nmb=value)
-                                                                                    # order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='product_in_oder', null=True,
-                                                                                    #                          default=None)
-                                                                                    # product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_in_oder', null=True,
-                                                                                    #                             default=None)
-                                                                                    # nmb = models.IntegerField(default=1)
-                                                                                    # price_per_item = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-                                                                                    # total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)  # price*nmb
-                                                                                    # is_active = models.BooleanField(default=True)
-                                                                                    # created = models.DateTimeField(auto_now_add=True, auto_now=False)
-                                                                                    # updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
             return redirect('shop_home')
         else:
             print("mistake")
