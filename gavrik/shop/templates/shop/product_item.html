@@ -5,7 +5,18 @@
             <img src="{{ el.image.url }}" class="img-card">
             <h6>{{ el.product.name}}</h6>
             <p>{{ el.product.short_description }}</p>
-            <p>{{ el.product.price }} $</p>
+            {% if el.product.discount == 0 %}
+                <div class="actual_price_item">
+                    <p>{{ el.product.discount_price }} $</p>
+                </div>
+            {% else %}
+                <div class="cross_item" >
+                    <s>{{ el.product.price }} $</s>
+                </div>
+                <div class="actual_price_item">
+                    <p>{{ el.product.discount_price }} $</p>
+                </div>
+            {% endif %}
             {% if el.product.discount %}
                 <div class="discount-style"> {{ el.product.discount }} %</div>
             {% endif %}

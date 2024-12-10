@@ -45,7 +45,7 @@
                                     {% for products in products_in_basket %}
                                         <li>
                                             {{ products.product.name }}-{{products.nmb}}шт. *
-                                            {{ products.product.price }} Итого: {{ products.total_price }}
+                                            {{ products.product.discount_price }} Итого: {{ products.total_price }}
                                             <a class="delete-item" href="" data-product_id="{{ products.id }}">x</a>
                                         </li>
                                     {% endfor %}

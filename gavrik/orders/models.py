@@ -64,7 +64,7 @@ class ProductInOrder(models.Model):
         verbose_name_plural = 'Товары в зазказе'
 
     def save(self, *args, **kwargs):
-        price_per_item = self.product.price
+        price_per_item = self.product.discount_price
         self.price_per_item = price_per_item
         self.total_price = float(self.nmb) * float(price_per_item)
 
@@ -109,7 +109,7 @@ class ProductInBasket(models.Model):
         verbose_name_plural = 'Товары в Корзине'
 
     def save(self, *args, **kwargs):
-        price_per_item = self.product.price
+        price_per_item = self.product.discount_price
         self.price_per_item = price_per_item
         self.total_price = int(self.nmb) * price_per_item
 

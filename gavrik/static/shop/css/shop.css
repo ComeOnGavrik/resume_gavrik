@@ -133,7 +133,7 @@ footer{
 }
 
 .otstup{
-    height: 95px;
+    height: 55px;
 }
 
 .hidden { display: none; }
@@ -189,3 +189,38 @@ footer{
     position: relative;
     text-align: center;
 }
+
+.cross {
+    margin: 3px 13px 0px 0px;
+    font-size: 21px;
+    color: red;
+    transition: transform 1s ease;
+}
+
+.actual_price{
+    margin-right: 10px;
+    font-size: 25px;
+    transition: transform 1s ease;
+}
+
+
+.actual_price:hover{
+    transform: scale(1.1);
+    color: green;
+}
+.cross:hover {
+    transform: scale(0.9);
+}
+
+.cross_item {
+    position: absolute;
+    font-size: 17px;
+    color: red;
+    right: 40%;
+    top: 77%;
+}
+
+.actual_price_item{
+    font-size: 21px;
+}
+

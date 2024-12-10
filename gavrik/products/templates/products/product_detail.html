@@ -13,14 +13,14 @@
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         {% for image in images %}
-                            <div class="swiper-slide"><img src="{{ image.image.url }}" alt="{{ image.product.name }}"></div>
+                        <div class="swiper-slide"><img src="{{ image.image.url }}" alt="{{ image.product.name }}"></div>
                         {% endfor %}
                     </div>
-                        <!-- Добавляем кнопки навигации -->
+                    <!-- Добавляем кнопки навигации -->
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
 
-                        <!-- Добавляем пагинацию -->
+                    <!-- Добавляем пагинацию -->
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
@@ -29,9 +29,6 @@
             <h1 class="text-center">
                 {{ product.name }}
             </h1>
-            <div class="">
-                <p>Price: {{ product.price }}</p>
-            </div>
             <div>
 
                 <!-- Nav tabs -->
@@ -66,6 +63,26 @@
                 <form id="form-buying-product" class="form-inline" action="{% url 'shop:basket_adding' %}"
                       style="display: flex">
                     {% csrf_token %}
+
+
+                    {% if product.discount == 0 %}
+                        <div class="actual_price">
+                            <p>{{ product.discount_price }} $</p>
+                        </div>
+                    {% else %}
+                        <div class="cross" >
+                            <s>{{ product.price }} $</s>
+                        </div>
+                        <div class="actual_price">
+                            <p>{{ product.discount_price }} $</p>
+                        </div>
+                    {% endif %}
+
+
+
+
+
+
                     <div class="form-group">
                         <input type="number" class="form-control" name="number" id="number" min="1" value="1">
                     </div>

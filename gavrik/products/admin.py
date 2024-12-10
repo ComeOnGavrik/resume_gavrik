@@ -21,7 +21,7 @@ class ProductImageInline(admin.TabularInline):
 
 class ProductAdmin(admin.ModelAdmin):
     readonly_fields = ('created', 'updated')
-    list_display = ['id', 'name', 'price', 'is_active']
+    list_display = ['id', 'name', 'discount_price', 'price', 'is_active']
     search_fields = ['name']
     inlines = [ProductImageInline]
 
