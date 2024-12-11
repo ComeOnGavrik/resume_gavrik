@@ -193,7 +193,7 @@ footer{
 .cross {
     margin: 3px 13px 0px 0px;
     font-size: 21px;
-    color: red;
+    color: #ffffff6e;
     transition: transform 1s ease;
 }
 
@@ -215,7 +215,7 @@ footer{
 .cross_item {
     position: absolute;
     font-size: 17px;
-    color: red;
+    color: #ffffff6e;
     right: 40%;
     top: 77%;
 }
@@ -224,3 +224,7 @@ footer{
     font-size: 21px;
 }
 
+svg {
+            width: 500px; /* Ширина смайлика */
+            height: 500px; /* Высота смайлика */
+        }

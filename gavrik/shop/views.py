@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from products.models import ProductImage
+from products.models import ProductImage, Product
+from .forms import SearchForm
+from django.db.models import Q
 
 
 # Create your views here.
@@ -10,4 +12,23 @@ def shop_home(request):
     return render(request, 'shop/shop_home.html', locals())
 
 
+def search(request):
+    form = SearchForm()
+    results = []
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            print(query, "!!!!!!!!")
 
+            results = ProductImage.objects.filter(
+                Q(product__name__icontains=query) | Q(product__description__icontains=query),
+                is_active=True,
+                is_main=True,
+                product__is_active=True
+            )
+        else:
+            query = "empty"
+            results = []
+    return render(request, 'shop/search.html', {'form': form, 'results': results,
+                                                'search_line': query})
