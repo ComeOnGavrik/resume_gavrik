@@ -8,10 +8,13 @@ from .forms import CheckoutContactsForm
 
 
 def basket_adding(request):
-    print('Вызвался баскет адинг')
+    print('Вызвался баскет адинг2')
     return_dict = dict()
     session_key = request.session.session_key
     data = request.POST
+    print("_________________________")
+    print(data)
+    print("_________________________")
     product_id = data.get("product_id")
     nmb = data.get("nmb")
     is_delete = data.get("is_delete")

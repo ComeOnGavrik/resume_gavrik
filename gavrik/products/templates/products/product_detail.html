@@ -62,9 +62,7 @@
             <div>
                 <form id="form-buying-product" class="form-inline" action="{% url 'shop:basket_adding' %}"
                       style="display: flex">
-                    {% csrf_token %}
-
-
+                      {% csrf_token %}
                     {% if product.discount == 0 %}
                         <div class="actual_price">
                             <p>{{ product.discount_price }} $</p>
@@ -77,11 +75,6 @@
                             <p>{{ product.discount_price }} $</p>
                         </div>
                     {% endif %}
-
-
-
-
-
 
                     <div class="form-group">
                         <input type="number" class="form-control" name="number" id="number" min="1" value="1">

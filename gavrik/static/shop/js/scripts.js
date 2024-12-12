@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    console.log("Загрузился документ")
      $('#number').on('input', function() {
                 this.value = this.value.replace(/[^0-9]/g, ''); // Оставляет только цифры
             });
@@ -33,7 +34,9 @@ $(document).ready(function(){
         }
         console.log("Вывод юрл: " + url)
 
+        console.log("!!__!!")
         console.log(data)
+        console.log("!!__!!")
 
         $.ajax({
                     url:url,
@@ -65,20 +68,51 @@ $(document).ready(function(){
 
     form.on('submit', function(e){
         e.preventDefault();
+        console.log("________Test__________");
         var nmb = $('#number').val();
         console.log(nmb);
         var submit_btn = $('#submit_btn');
         var product_id = submit_btn.data("product_id");
         var product_name = submit_btn.data("product_name");
         var product_price = submit_btn.data("product_price")
-
+        console.log("________________________");
+        console.log(product_id);
+        console.log(product_name);
+        console.log(product_price);
+        console.log("________________________");
 
         basketUpdating(product_id, nmb, is_delete=false);
     })
 
+
+
+    $('form[id^="form-buying-product-"]').on('submit', function(e){
+        e.preventDefault();
+        console.log("________Test__________");
+
+        var form = $(this);
+        var nmb = form.find('input[name="number"]').val();
+        console.log(nmb);
+
+        var submit_btn = form.find('button[id^="submit_btn-"]');
+        var product_id = submit_btn.data("product_id");
+        var product_name = submit_btn.data("product_name");
+        var product_price = submit_btn.data("product_price");
+
+        console.log("_____///////////////_______");
+        console.log(product_id);
+        console.log(product_name);
+        console.log(product_price);
+        console.log("______////////////////_______");
+
+        basketUpdating(product_id, nmb, false);
+    });
+
+
     function showingBasket(){
         $('.basket-items').toggleClass('hidden');
     }
+
 
 //    $('.basket-container').on('click', function(e) {
 //        showingBasket();

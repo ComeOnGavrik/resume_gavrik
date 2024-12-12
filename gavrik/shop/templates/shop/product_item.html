@@ -1,25 +1,42 @@
 <a href="{% url 'shop:product_detail' el.product.id %}">
-<div class="col d-flex justify-content-center" >
-        <div class="product-item" >
+    <div class="col d-flex justify-content-center">
+        <div class="product-item">
 
             <img src="{{ el.image.url }}" class="img-card">
             <h6>{{ el.product.name}}</h6>
             <p>{{ el.product.short_description }}</p>
             {% if el.product.discount == 0 %}
-                <div class="actual_price_item">
-                    <p>{{ el.product.discount_price }} $</p>
-                </div>
+            <div class="actual_price_item">
+                <p>{{ el.product.discount_price }} $</p>
+            </div>
             {% else %}
-                <div class="cross_item" >
-                    {{ el.product.price }} $
-                </div>
-                <div class="actual_price_item">
-                    <p>{{ el.product.discount_price }} $</p>
-                </div>
+            <div class="cross_item">
+                {{ el.product.price }} $
+            </div>
+            <div class="actual_price_item">
+                <p>{{ el.product.discount_price }} $</p>
+            </div>
             {% endif %}
             {% if el.product.discount %}
-                <div class="discount-style"> {{ el.product.discount }} %</div>
+            <div class="discount-style"> {{ el.product.discount }} %</div>
             {% endif %}
+
+            <form id="form-buying-product-{{ forloop.counter }}" class="form-inline" action="{% url 'shop:basket_adding' %}"
+                  style="display: flex">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <input type="number" class="form-control hidden" name="number" id="number" min="1" value="1">
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="submit_btn-{{ forloop.counter }}" class="btn btn-success btn-buy"
+                            data-product_id="{{ el.product.id }}"
+                            data-product_name="{{ el.product.name }}"
+                            data-product_price="{{ el.product.price }}">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                    </button>
+                </div>
+            </form>
         </div>
- </div>
- </a>
+    </div>
+</a>
