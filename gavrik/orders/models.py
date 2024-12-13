@@ -5,7 +5,6 @@ from products.models import Product
 
 
 # Create your models here.
-
 class Status(models.Model):
     status_name = models.CharField(max_length=15, blank=True, null=True, default=None)
     is_active = models.BooleanField(default=True)
@@ -18,6 +17,21 @@ class Status(models.Model):
     class Meta:
         verbose_name = 'Статус'
         verbose_name_plural = 'Статусы'
+
+
+class OrderACall(models.Model):
+    subscriber_name = models.CharField(max_length=50, blank=True, null=True, default=None)
+    subscriber_phone = models.CharField(max_length=20, blank=True, null=True, default=None)
+    status = models.ForeignKey(Status, on_delete=models.CASCADE, related_name='status_call', null=False, default=None)
+    created = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __str__(self):
+        return f"Заказ №{self.id}. {self.status.status_name}, {self.subscriber_name}"
+
+    class Meta:
+        verbose_name = 'Заказ звонка'
+        verbose_name_plural = 'Заказ звонков'
 
 
 class Order(models.Model):

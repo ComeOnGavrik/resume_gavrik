@@ -151,6 +151,7 @@ $(document).ready(function(){
         console.log('общая стоимость '+total_order_amount);
     };
 
+
     $(document).on('change', ".product-in-basket-nmb", function(){
         var current_nmb = $(this).val();
         var current_tr = $(this).closest('tr');
@@ -161,6 +162,87 @@ $(document).ready(function(){
     })
 
     calculatingBasketAmount()
+
+
+    let inactivityTime = 0;
+
+    function resetTimer() {
+        inactivityTime = 0; // Сброс таймера при активности
+    }
+
+    function showModal() {
+        $('#orderCallModal').css('display', 'flex'); // Показываем модальное окно
+        setTimeout(function() {
+            $('#orderCallModal').addClass('show'); // Добавляем класс для анимации
+        }, 10); // Небольшая задержка для корректной анимации
+    }
+
+    const timer = setInterval(function() {
+        inactivityTime++;
+        if (inactivityTime >= 6) { // 60 секунд бездействия
+            showModal(); // Запускаем анимацию
+            clearInterval(timer);
+        }
+    }, 1000); // Проверка каждую секунду
+
+    $(window).on('mousemove keydown click scroll', resetTimer);
+
+    $('#closeModal').on('click', function() {
+        $('#orderCallModal').removeClass('show'); // Удаляем класс для анимации
+        setTimeout(function() {
+            $('#orderCallModal').css('display', 'none'); // Скрываем модальное окно после анимации
+        }, 300); // Ждем завершения анимации
+    });
+
+    $('#orderCallForm').on('submit', function(e) {
+        e.preventDefault();
+        const name = $('#subscriber_name').val();
+        const phone = $('#subscriber_phone').val();
+
+        console.log(`Заказан звонок от ${name} с номером ${phone}`);
+
+        $('#orderCallModal').removeClass('show'); // Удаляем класс для анимации
+        setTimeout(function() {
+            $('#orderCallModal').css('display', 'none'); // Скрываем модальное окно после анимации
+        }, 300); // Ждем завершения анимации
+
+
+        var data = {}
+        var csrf_token = $('#form-csrf [name="csrfmiddlewaretoken"]').val();
+        data["csrfmiddlewaretoken"] = csrf_token;
+
+        const formData = {
+            subscriber_name: $('#subscriber_name').val(),
+            subscriber_phone: $('#subscriber_phone').val()
+        };
+        var form2 = $('#orderCallForm');
+        var url = form2.attr("action");
+
+        $.ajax({
+                    url:url,
+                    type: 'POST',
+                    data: formData,
+                    headers: {
+                        'X-CSRFToken': csrf_token // Добавляем CSRF-токен в заголовок
+                    },
+                    cache: true,
+                    success: function(response) {
+                        // Обработка успешного ответа
+                        console.log('Успешно отправлено:');
+                        console.log("________")
+                        console.log(formData)
+                        console.log("________")
+                        // Здесь можно добавить логику для отображения сообщения пользователю
+                    },
+                    error: function(xhr, status, error) {
+                        // Обработка ошибки
+                        console.error('Ошибка:', error);
+                    }
+                })
+
+
+        this.reset();
+    });
 
 });
 
@@ -182,4 +264,5 @@ document.addEventListener('DOMContentLoaded', function() {
             disableOnInteraction: false, // Продолжать автоматическую прокрутку
         },
     });
+
 });

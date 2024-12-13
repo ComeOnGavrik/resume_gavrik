@@ -1,0 +1,18 @@
+<div id="orderCallModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>Заказать звонок</h2>
+        <form id="orderCallForm" action="{% url 'shop:call_order' %}" method="post">
+            {% csrf_token %}
+            <div>
+                <label for="subscriber_name">Имя:</label>
+                <input type="text" id="subscriber_name" name="subscriber_name" required>
+            </div>
+            <div>
+                <label for="subscriber_phone">Номер телефона:</label>
+                <input type="tel" id="subscriber_phone" name="subscriber_phone" required>
+            </div>
+            <button type="submit">Заказать</button>
+        </form>
+    </div>
+</div>

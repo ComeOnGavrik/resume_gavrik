@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Order, ProductInOrder, Status, ProductInBasket
+from .models import Order, ProductInOrder, Status, ProductInBasket, OrderACall
 
 
 class ProductInOrderInline(admin.TabularInline):
@@ -32,6 +32,17 @@ class ProductInOrderAdmin(admin.ModelAdmin):
 
 admin.site.register(ProductInOrder, ProductInOrderAdmin)
 
+
+class OrderACallAdmin(admin.ModelAdmin):
+    readonly_fields = ('created', 'updated')
+    list_display = ['subscriber_name', 'subscriber_phone', 'status']
+    search_fields = ['status']
+
+    class Meta:
+        model = ProductInOrder
+
+
+admin.site.register(OrderACall, OrderACallAdmin)
 
 class StatusAdmin(admin.ModelAdmin):
     readonly_fields = ('created', 'updated')

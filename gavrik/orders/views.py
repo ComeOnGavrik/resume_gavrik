@@ -1,8 +1,8 @@
 # views.py
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 
-from .models import ProductInBasket, Order, Status, ProductInOrder
+from .models import ProductInBasket, Order, Status, ProductInOrder, OrderACall
 from products.models import ProductImage
 from .forms import CheckoutContactsForm
 
@@ -95,3 +95,29 @@ def checkout(request):
         else:
             print("mistake")
     return render(request, 'shop/checkout.html', locals())
+
+
+def ordering_call(request):
+    data = request.POST
+    subscriber_name = request.POST.get('subscriber_name')
+    subscriber_phone = request.POST.get('subscriber_phone')
+    print(subscriber_name)
+    print(subscriber_phone)
+    OrderACall.objects.create(subscriber_name=subscriber_name, subscriber_phone=subscriber_phone,
+                              status=Status.objects.all()[0])
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+# if data.name.startswith("subscriber_name"):
+    # for name, value in data.items():
+    #     if name.startswith("subscriber_name"):
+    #         name_s = name.split("subscriber_name")
+    #         print(name_s[1], '---', value)
+    #         name_sub = value
+    #
+    #     if name.startswith("subscriber_name"):
+    #         id_el = name.split("product_in_basket_el_")
+    #         print(id_el[1], '---', value)
+    #         prod = ProductInBasket.objects.get(id=id_el[1])
+    #         prod.nmb = value
+    #         prod.save(force_update=True)
+    #
+    # OrderACall.objects.create(subscriber_name=name_sub, subscriber_phone=prod.product, status=value)
