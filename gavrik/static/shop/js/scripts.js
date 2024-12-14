@@ -211,10 +211,47 @@ $(document).ready(function(){
         var csrf_token = $('#form-csrf [name="csrfmiddlewaretoken"]').val();
         data["csrfmiddlewaretoken"] = csrf_token;
 
+        const subscriberName = $('#subscriber_name').val();
+        const subscriberPhone = $('#subscriber_phone').val();
+
+        // Переменная для отслеживания ошибок
+        let isValid = true;
+        let errorMessage = '';
+
+        // Валидация имени
+        if (subscriberName.length > 20) {
+            isValid = false;
+            errorMessage += 'Имя не может превышать 20 символов.\n';
+        }
+        if (/[^a-zA-Zа-яА-ЯёЁ\s]/.test(subscriberName)) {
+            isValid = false;
+            errorMessage += 'Имя может содержать только буквы.\n';
+        }
+
+        // Валидация телефона
+        if (subscriberPhone.length > 12) {
+            isValid = false;
+            errorMessage += 'Телефон не может превышать 12 символов.\n';
+        }
+        if (!/^\d+$/.test(subscriberPhone)) {
+            isValid = false;
+            errorMessage += 'Телефон может содержать только цифры.\n';
+        }
+
+        // Если есть ошибки, выводим сообщение и прерываем отправку формы
+        if (!isValid) {
+            alert(errorMessage);
+            return;
+        }
+
+        // Если данные валидны, собираем данные для отправки
         const formData = {
-            subscriber_name: $('#subscriber_name').val(),
-            subscriber_phone: $('#subscriber_phone').val()
+            subscriber_name: subscriberName,
+            subscriber_phone: subscriberPhone
         };
+
+
+
         var form2 = $('#orderCallForm');
         var url = form2.attr("action");
 
@@ -227,15 +264,9 @@ $(document).ready(function(){
                     },
                     cache: true,
                     success: function(response) {
-                        // Обработка успешного ответа
                         console.log('Успешно отправлено:');
-                        console.log("________")
-                        console.log(formData)
-                        console.log("________")
-                        // Здесь можно добавить логику для отображения сообщения пользователю
                     },
                     error: function(xhr, status, error) {
-                        // Обработка ошибки
                         console.error('Ошибка:', error);
                     }
                 })
@@ -260,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
             prevEl: '.swiper-button-prev',
         },
         autoplay: {
-            delay: 300000, // Автопрокрутка каждые 3 секунды
+            delay: 3000, // Автопрокрутка каждые 3 секунды
             disableOnInteraction: false, // Продолжать автоматическую прокрутку
         },
     });

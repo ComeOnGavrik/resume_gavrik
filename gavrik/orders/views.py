@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 
 from .models import ProductInBasket, Order, Status, ProductInOrder, OrderACall
 from products.models import ProductImage
-from .forms import CheckoutContactsForm
+from .forms import CheckoutContactsForm, OrderACallForm
 
 
 def basket_adding(request):
@@ -98,10 +98,9 @@ def checkout(request):
 
 
 def ordering_call(request):
-    subscriber_name = request.POST.get('subscriber_name')
-    subscriber_phone = request.POST.get('subscriber_phone')
-    print(subscriber_name)
-    print(subscriber_phone)
-    OrderACall.objects.create(subscriber_name=subscriber_name, subscriber_phone=subscriber_phone,
-                              status=Status.objects.all()[0])
+    form = OrderACallForm(request.POST or None)
+    if form.is_valid():
+        OrderACall.objects.create(subscriber_name=form.cleaned_data["subscriber_name"],
+                                  subscriber_phone=form.cleaned_data["subscriber_phone"],
+                                  status=Status.objects.all()[0])
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))

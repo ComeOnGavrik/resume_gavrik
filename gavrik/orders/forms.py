@@ -10,10 +10,17 @@ class CheckoutContactsForm(forms.Form):
     user_phone = forms.CharField(required=True)
 
     def clean_user_name(self):
-        pass
+        user_name = self.cleaned_data.get('user_name')
+        return user_name
 
     def clean_user_phone(self):
         user_phone = self.cleaned_data.get('user_phone')
-        if len(user_phone) != 12:  # Проверка, что телефон состоит только из цифр
-            raise ValidationError('Неправильное количество символов в телефоне')
+        if len(user_phone) != 12:
+            raise ValidationError('Неправильное количество символов в телефоне!!!!!!!!!!!!!!!!!!!_')
         return user_phone
+
+
+class OrderACallForm(forms.Form):
+    subscriber_name = forms.CharField(required=True)
+    subscriber_phone = forms.CharField(required=True)
+
