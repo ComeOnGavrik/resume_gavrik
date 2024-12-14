@@ -1,18 +1,27 @@
+{% load static %}
 <div id="orderCallModal" class="modal" style="display: none;">
     <div class="modal-content">
         <span class="close" id="closeModal">&times;</span>
-        <h2>Заказать звонок</h2>
-        <form id="orderCallForm" action="{% url 'shop:call_order' %}" method="post">
+
+
+        <h3 style="color: #2c2c2c"> Остались вопросы? </h3>
+        <p style="color: #2c2c2c"> Закажи звонок </p>
+        <form class="form-inline ml-auto" id="orderCallForm" action="{% url 'shop:call_order' %}" method="post">
             {% csrf_token %}
-            <div>
-                <label for="subscriber_name">Имя:</label>
-                <input type="text" id="subscriber_name" name="subscriber_name" required>
+            <div class="windowcall" style="margin-bottom: 3px;">
+                <input class="form-inline ml-auto" type="text" id="subscriber_name" name="subscriber_name"
+                       placeholder="Имя" required>
             </div>
-            <div>
-                <label for="subscriber_phone">Номер телефона:</label>
-                <input type="tel" id="subscriber_phone" name="subscriber_phone" required>
+            <div class="windowcall" style="margin-bottom: 3px;">
+                <input class="form-inline ml-auto" type="tel" id="subscriber_phone" name="subscriber_phone"
+                       placeholder="Номер телефона" required>
             </div>
-            <button type="submit">Заказать</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Заказать</button>
         </form>
+
+
+        <img src="{% static 'main/img/person-using-smartphone_24908-81575-removebg-preview.png' %}" class="img2">
+
+
     </div>
 </div>
