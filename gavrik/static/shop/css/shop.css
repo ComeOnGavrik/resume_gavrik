@@ -286,7 +286,7 @@ svg {
     transition: transform 1.3s ease, opacity 1.3s ease; /* Параметры анимации */
     font-family: sans-serif;
     font-size: 21px;
-    width: 510px;
+    width: 420px;
     max-width: 90%;
     position: relative;
 }
@@ -301,12 +301,16 @@ svg {
     float: right;
     font-size: 28px;
     font-weight: bold;
+    cursor: pointer;
+    width: 0px;
 }
 
 .windowcall input {
     border: 2px solid;
     border-radius: 10px;
     background-color: #fff;
+    max-width: 90%;
+
 }
 
 input[type=text]::placeholder {
@@ -328,4 +332,10 @@ input[type=tel]::placeholder {
     left: 64%;
     top: -2%;
     transform: scale(-1, 1);
+}
+
+@media screen and (max-width: 507px) {
+    .img2 {
+        display:none
+    }
 }
