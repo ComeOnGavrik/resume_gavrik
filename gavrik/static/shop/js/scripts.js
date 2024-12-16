@@ -179,7 +179,7 @@ $(document).ready(function(){
 
     const timer = setInterval(function() {
         inactivityTime++;
-        if (inactivityTime >= 6) { // 60 секунд бездействия
+        if (inactivityTime >= 60) { // 60 секунд бездействия
             showModal(); // Запускаем анимацию
             clearInterval(timer);
         }
@@ -256,20 +256,20 @@ $(document).ready(function(){
         var url = form2.attr("action");
 
         $.ajax({
-                    url:url,
-                    type: 'POST',
-                    data: formData,
-                    headers: {
-                        'X-CSRFToken': csrf_token // Добавляем CSRF-токен в заголовок
-                    },
-                    cache: true,
-                    success: function(response) {
-                        console.log('Успешно отправлено:');
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Ошибка:', error);
-                    }
-                })
+            url:url,
+            type: 'POST',
+            data: formData,
+            headers: {
+                'X-CSRFToken': csrf_token // Добавляем CSRF-токен в заголовок
+            },
+            cache: true,
+            success: function(response) {
+                console.log('Успешно отправлено:');
+            },
+            error: function(xhr, status, error) {
+                console.error('Ошибка:', error);
+            }
+        })
 
 
         this.reset();
@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
             prevEl: '.swiper-button-prev',
         },
         autoplay: {
-            delay: 3000, // Автопрокрутка каждые 3 секунды
+            delay: 10000, // Автопрокрутка каждые 3 секунды
             disableOnInteraction: false, // Продолжать автоматическую прокрутку
         },
     });

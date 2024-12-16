@@ -1,0 +1,20 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block tittle %} Магазик {% endblock %}
+
+
+{% block content-shop %}
+<div class="section1">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
+            {% for el in cat_prods %}
+                {% include 'shop/product_item.html' %}
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

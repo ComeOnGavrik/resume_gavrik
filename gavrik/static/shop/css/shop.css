@@ -160,8 +160,8 @@ footer{
 }
 
 .swiper-slide img {
-    max-width: 100%; /* Убедитесь, что изображение не превышает размер контейнера */
-    border-radius: 10px; /* Скругленные углы */
+    max-width: 100%;
+    height: 400px;
 }
 
 .swiper-slide-active {

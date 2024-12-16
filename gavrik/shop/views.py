@@ -32,3 +32,9 @@ def search(request):
             results = []
     return render(request, 'shop/search.html', {'form': form, 'results': results,
                                                 'search_line': query})
+
+
+def showing_category_products(request, cat_name):
+    cat_products = ProductImage.objects.filter(is_active=True, is_main=True, product__is_active=True,
+                                               product__category__name=cat_name)
+    return render(request, 'shop/categories.html', {'cat_prods': cat_products})
