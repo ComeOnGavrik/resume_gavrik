@@ -37,10 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'news',
-    'users',
+    'phonenumber_field',
     'shop',
     'orders',
     'products',
+    'users.apps.UsersConfig'
 ]
 
 MIDDLEWARE = [
@@ -113,10 +114,9 @@ USE_TZ = True
 
 USE_I18N = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-
+AUTH_USER_MODEL = 'users.CustomUser'
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
@@ -129,5 +129,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'home'
 
-#LOGOUT_REDIRECT_URL = '/home'
+# LOGOUT_REDIRECT_URL = '/home'
 LOGIN_URL = 'users:login'

@@ -13,15 +13,15 @@ class LoginUser(LoginView):
     form_class = LoginUserForm
     template_name = 'users/login.html'
     extra_context = {'tittle': 'Авторизация'}
+
+
 def logout_user(request):
     logout(request)
     return redirect('users:login')
+
 
 class RegisterUser(CreateView):
     form_class = RegisterUserForm
     template_name = 'users/register.html'
     extra_context = {'tittle': 'Регистрация'}
     success_url = reverse_lazy('users:login')
-
-
-

@@ -16,23 +16,8 @@
 <body>
 <button id="toggleMenu"><i class="fa-solid fa-bars"></i></button>
 
-<div class="sidenav" >
-    <img src="{% static 'main/img/logo_nike.png' %}" alt="logo">
-    <a href="admin/"> <i class="fa-solid fa-wrench"></i> Админка </a>
-    <a href="{% url 'reference' %}"> <i class="fa-solid fa-wrench"></i> Тех задание </a><br>
-    <a href="{% url 'users:login' %}"> <i class="fa fa-door-open"></i> login </a>
-    <a href="{% url 'users:logout' %}"> <i class="fa fa-door-closed"></i> logout </a>
-    <a href="{% url 'users:register' %}"> <i class="fa-solid fa-user-plus"></i> register </a>
-    <br>
-    <a href="{% url 'home' %}"> <i class="fa-solid fa-house"></i> Главная</a>
-    <a href="{% url 'about' %}"> <i class="fa-regular fa-address-card"></i> Про нас </a>
-    <a href="{% url 'news_home' %}"> <i class="fa fa-newspaper"></i> Новости </a>
-    <a href=""> <i class="fa-brands fa-instagram"></i> Контакты </a>
-    <a href="{% url 'create' %}">
-        <button class="btn btn-info"><i class="fas fa-plus-circle"></i> Создать</button>
-    </a>
-    <a href="{% url 'shop:shop_home' %}"> <i class="fa-solid fa-house"></i> Магазинчик </a>
-</div>
+{% include 'main/sidenav.html' %}
+
 
 <div class="main">
     {% block content %}
