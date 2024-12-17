@@ -6,7 +6,7 @@
 
 <!--    -->
     {% if user.is_authenticated  %}
-        <a href=""> <i class="fa fa-door-open"></i> {{user.username}} </a>
+        <a href="{% url 'users:profile' %}"> <i class="fa fa-door-open"></i> {{user.username}} </a>
         <a href="{% url 'users:logout' %}"> <i class="fa fa-door-closed"></i> logout </a>
     {% else %}
         <a href="{% url 'users:login' %}"> <i class="fa fa-door-open"></i> Войти </a>
