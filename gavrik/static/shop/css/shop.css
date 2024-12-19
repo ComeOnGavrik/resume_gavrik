@@ -17,7 +17,7 @@ a {
 
 a .product-item{
     position: relative;
-    max-width:270px;
+    width:270px;
     margin-top: 14px;
     color: #fff;
     font-weight: 100;
