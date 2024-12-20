@@ -72,9 +72,21 @@
                      align: right" value="{{user.first_name}}" maxlength="32">
                 </div>
                 <div class="form-group">
+
                     <label>Phone number</label>
                     <input type="text" class="form-control" value="{{user.phone_number}}" name="{{form.user_phone.html_name}}"
                            style="width: 30%" id="user_phone">
+                </div>
+                <div class="form-group">
+                    <label>customer_address</label>
+                    <input type="text" class="form-control" name="{{form.user_address.html_name}}"
+                           style="width: 30%" id="user_address">
+                </div>
+                <div class="form-group">
+                    <label>comments</label>
+                    <input type="text" class="form-control" name="{{form.user_comment.html_name}}"
+                           style="width: 30%" id="user_comment">
+
                 </div>
             </div>
         </div>

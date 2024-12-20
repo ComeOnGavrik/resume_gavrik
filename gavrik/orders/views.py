@@ -64,7 +64,6 @@ def checkout(request):
         products_in_basket = ProductInBasket.objects.filter(session_key=session_key, is_active=True)
     else:
         products_in_basket = ProductInBasket.objects.filter(author=request.user, is_active=True)
-        # form.user_name = request.user Автозаполнение полей!!!
 
     products_in_basket_ph_ids = []
     for el in products_in_basket:
@@ -77,10 +76,14 @@ def checkout(request):
         print('______________________TEST')
         print(request.POST)
         data = request.POST
+        print("data:")
+        print(data)
         if form.is_valid():
             print("yes")
             order = Order.objects.create(customer=request.user, customer_name=form.cleaned_data["user_name"],
-                                         customer_phone=form.cleaned_data["user_phone"], status=Status.objects.all()[0])
+                                         customer_phone=form.cleaned_data["user_phone"],
+                                         customer_address=form.cleaned_data["user_address"],
+                                         comments=form.cleaned_data["user_comment"], status=Status.objects.all()[0])
 
             for name, value in data.items():
                 if name.startswith("product_in_basket_el_"):

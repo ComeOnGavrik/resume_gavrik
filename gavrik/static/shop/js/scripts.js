@@ -179,7 +179,7 @@ $(document).ready(function(){
 
     const timer = setInterval(function() {
         inactivityTime++;
-        if (inactivityTime >= 10) { // 60 секунд бездействия
+        if (inactivityTime >= 30) { // 60 секунд бездействия
             showModal(); // Запускаем анимацию
             clearInterval(timer);
         }
