@@ -6,7 +6,7 @@
 {% block content-shop %}
 <h1 style="text-align: center">Товары в корзине</h1>
 <div class="container">
-    <form method="post" >
+    <form method="post">
         {% csrf_token %}
         <div class="row">
             <div class="col-lg-6">
@@ -55,48 +55,43 @@
 
                     </tbody>
                 </table>
-                <div class="text-right" style="text-align: right;">
-                    <b>Сумма заказа: </b> <span id="total_order_amount"></span>
-                </div>
 
-
-                <div class="text-right" style="text-align: right;">
-                    <button type="submit" class="btn btn-primary btn-lg">Оформить заказ</button>
-                </div>
             </div>
 
-            <div class="col-lg-6">
-                <div class="form-group">
+            <div class="col-lg-6" style="position: relative">
+                <div class="form-group" style="position: absolute;
+                    left: 50%;
+                    transform: translate(-50%, 0%);">
                     <label>Имя</label>
-                    <input type="Text" class="form-control" name="{{ form.user_name.html_name }}" style="width: 30%;
-                     align: right" value="{{user.first_name}}" maxlength="32">
-                </div>
-                <div class="form-group">
+                    <input type="Text" class="form-control" name="{{ form.user_name.html_name }}"  value="{{user.first_name}}" maxlength="32">
+
 
                     <label>Phone number</label>
-                    <input type="text" class="form-control" value="{{user.phone_number}}" name="{{form.user_phone.html_name}}"
-                           style="width: 30%" id="user_phone">
-                </div>
-                <div class="form-group">
+                    <input type="text" class="form-control" value="{{user.phone_number}}"
+                           name="{{form.user_phone.html_name}}"
+                            id="user_phone">
+
                     <label>customer_address</label>
                     <input type="text" class="form-control" name="{{form.user_address.html_name}}"
-                           style="width: 30%" id="user_address">
-                </div>
-                <div class="form-group">
+                            id="user_address">
+
                     <label>comments</label>
                     <input type="text" class="form-control" name="{{form.user_comment.html_name}}"
-                           style="width: 30%" id="user_comment">
+                            id="user_comment">
 
                 </div>
+            </div>
+            <div class="text-right" style="text-align: right;">
+                <b>Сумма заказа: </b> <span id="total_order_amount"></span>
+            </div>
+
+
+            <div class="text-right" style="text-align: right;">
+                <button type="submit" class="btn btn-primary btn-lg">Оформить заказ</button>
             </div>
         </div>
         {{ form.errors }}
     </form>
-
-
-
-
-
 
 
 </div>
