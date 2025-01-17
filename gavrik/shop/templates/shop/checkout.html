@@ -10,7 +10,7 @@
         {% csrf_token %}
         <div class="row">
             <div class="col-lg-6">
-                <table class="table text-center">
+                <table class="table-prods">
                     <thead>
                     <tr>
                         <th> Картинка</th>
@@ -62,23 +62,47 @@
                 <div class="form-group" style="position: absolute;
                     left: 50%;
                     transform: translate(-50%, 0%);">
-                    <label>Имя</label>
-                    <input type="Text" class="form-control" name="{{ form.user_name.html_name }}"  value="{{user.first_name}}" maxlength="32">
-
-
-                    <label>Phone number</label>
-                    <input type="text" class="form-control" value="{{user.phone_number}}"
-                           name="{{form.user_phone.html_name}}"
-                            id="user_phone">
-
-                    <label>customer_address</label>
-                    <input type="text" class="form-control" name="{{form.user_address.html_name}}"
-                            id="user_address">
-
-                    <label>comments</label>
-                    <input type="text" class="form-control" name="{{form.user_comment.html_name}}"
-                            id="user_comment">
-
+                    <table class="contact-table">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <label>Имя</label>
+                            </td>
+                            <td>
+                                <input type="Text" class="form-control" name="{{ form.user_name.html_name }}"
+                                       value="{{user.first_name}}" maxlength="32">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Phone number</label>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" value="{{user.phone_number}}"
+                                       name="{{form.user_phone.html_name}}"
+                                       id="user_phone">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>customer_address</label>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="{{form.user_address.html_name}}"
+                                       id="user_address">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>comments</label>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="{{form.user_comment.html_name}}"
+                                       id="user_comment">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="text-right" style="text-align: right;">

@@ -339,3 +339,79 @@ input[type=tel]::placeholder {
         display:none
     }
 }
+.contact-table {
+    border-collapse: separate; /* Устанавливаем разделение ячеек */
+    border-spacing: 4px; /* Расстояние между ячейками */
+    width: 420px;
+    box-shadow: 0px 0px 12px 7px rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    background-color: #1a1a1a;
+}
+
+.contact-table tbody tr {
+    height: 60px; /* Высота одной строки таблицы */
+}
+
+.contact-table tbody tr:nth-child(odd) {
+    background-color: #363636; /* Цвет для нечетных строк */
+}
+
+.contact-table tbody tr:nth-child(even) {
+    background-color: #575757; /* Цвет для четных строк */
+}
+
+.contact-table td {
+    text-align: center; /* Центрирует текст в ячейках */
+    vertical-align: middle; /* Центрирует содержимое по вертикали */
+    color: white; /* Цвет текста */
+    padding: 10px; /* Отступы внутри ячеек */
+    border-radius: 7px; /* Закругленные углы ячеек */
+    background-color: inherit; /* Устанавливает фон ячейки таким же, как у родителя */
+}
+
+.table-prods {
+    border-collapse: separate; /* Разделение ячеек */
+    border-spacing: 2px; /* Расстояние между ячейками */
+    width: 100%; /* Ширина таблицы */
+    max-width: 800px; /* Максимальная ширина */
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.5); /* Белая тень */
+    border-radius: 8px; /* Закругленные углы */
+    background-color: #1a1a1a; /* Цвет фона */
+}
+
+.table-prods thead {
+    background-color: #262626; /* Цвет фона заголовка */
+}
+
+.table-prods th, .table-prods td {
+    text-align: center; /* Центрирование текста */
+    vertical-align: middle; /* Центрирование содержимого */
+    color: white; /* Цвет текста */
+    padding: 10px; /* Отступы внутри ячеек */
+}
+
+.table-prods th {
+    height: 60px; /* Высота заголовков */
+}
+
+.table-prods tbody tr:nth-child(odd) {
+    background-color: #363636; /* Цвет для нечетных строк */
+}
+
+.table-prods tbody tr:nth-child(even) {
+    background-color: #575757; /* Цвет для четных строк */
+}
+
+.table-prods .img-card {
+    width: 222px; /* Ширина изображения */
+    height: 180px; /* Высота изображения */
+    border-radius: 5px; /* Закругленные углы для изображений */
+    object-fit: cover; /* Соотношение сторон изображения */
+}
+
+.product-in-basket-nmb {
+    width: 50px; /* Ширина поля ввода количества */
+    text-align: center; /* Центрирование текста в поле ввода */
+    border-radius: 5px; /* Закругленные углы для поля ввода */
+    padding: 5px; /* Отступы внутри поля ввода */
+}
