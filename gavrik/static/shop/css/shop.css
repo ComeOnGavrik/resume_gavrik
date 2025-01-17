@@ -379,12 +379,7 @@ input[type=tel]::placeholder {
     background-color: #1a1a1a; /* Цвет фона */
 }
 
-.table-prods thead {
-    background-color: #262626; /* Цвет фона заголовка */
-}
-
 .table-prods th, .table-prods td {
-    text-align: center; /* Центрирование текста */
     vertical-align: middle; /* Центрирование содержимого */
     color: white; /* Цвет текста */
     padding: 10px; /* Отступы внутри ячеек */

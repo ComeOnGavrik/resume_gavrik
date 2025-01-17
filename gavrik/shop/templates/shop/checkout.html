@@ -11,41 +11,28 @@
         <div class="row">
             <div class="col-lg-6">
                 <table class="table-prods">
-                    <thead>
-                    <tr>
-                        <th> Картинка</th>
-                        <th> Название товара</th>
-                        <th> Количество</th>
-                        <th> Цена за еденицу</th>
-                        <th> Общая цена</th>
-                    </tr>
-                    </thead>
                     <tbody>
                     {% for el in products_in_basket %}
                     <tr>
-                        <td>
+                        <td style="    width: 245px;">
                             {% for ph in products_in_basket_ph %}
                             {% if el.product.id == ph.product.id %}
                             <img src="{{ ph.image.url }}" class="img-card">
                             {% endif %}
                             {% endfor %}
                         </td>
-
-                        <td> {{el.product.name}}</td>
-
                         <td>
+                            {{el.product.name}}<br>
+
+
                             <input class="product-in-basket-nmb" value="{{ el.nmb }}" type="number" id="number"
                                    name="product_in_basket_el_{{ el.id }}">
-                        </td>
-
-                        <td>
-                                    <span class="product-price">
+<br>
+                            <span class="product-price">
                                         {{ el.price_per_item }}
                                     </span>
-                        </td>
-
-                        <td>
-                                    <span class="total-product-in-basket-amount">
+<br>
+                            <span class="total-product-in-basket-amount">
                                         {{ el.total_price }}
                                     </span>
                         </td>
