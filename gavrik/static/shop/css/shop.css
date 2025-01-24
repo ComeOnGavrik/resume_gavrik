@@ -1,6 +1,7 @@
 body{
      background:#2c2c2c;
      color: #fff;
+     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .section-top{
@@ -398,10 +399,8 @@ input[type=tel]::placeholder {
 }
 
 .table-prods .img-card {
-    width: 222px; /* Ширина изображения */
-    height: 180px; /* Высота изображения */
-    border-radius: 5px; /* Закругленные углы для изображений */
-    object-fit: cover; /* Соотношение сторон изображения */
+    height: 100px;
+    object-fit: contain;
 }
 
 .product-in-basket-nmb {
@@ -409,4 +408,97 @@ input[type=tel]::placeholder {
     text-align: center; /* Центрирование текста в поле ввода */
     border-radius: 5px; /* Закругленные углы для поля ввода */
     padding: 5px; /* Отступы внутри поля ввода */
+}
+
+
+
+/*_____________________Стили для input с + и - в шаблоне корзины __________________________*/
+.number {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    width: 120px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.number:hover {
+    border-color: #bbb;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+.number input[type="number"] {
+    display: block;
+    height: 25px; /* Уменьшено с 40px */
+    width: 100%;
+    padding: 0 35px; /* Оставляем место для кнопок */
+    margin: 0;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 14px; /* Уменьшен размер шрифта */
+    font-weight: 500;
+    color: #333;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    appearance: textfield;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.number input[type="number"]:focus {
+    background-color: #fff;
+    color: #000;
+}
+.number input[type="number"]::-webkit-outer-spin-button,
+.number input[type="number"]::-webkit-inner-spin-button {
+    display: none;
+}
+.number-minus,
+.number-plus {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 35px; /* Уменьшено с 40px */
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+    background-color: #f0f0f0;
+    font-size: 14px; /* Уменьшен размер шрифта */
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.number-minus {
+    left: 0;
+    border-right: 1px solid #ddd;
+}
+.number-plus {
+    right: 0;
+    border-left: 1px solid #ddd;
+}
+.number-minus:hover,
+.number-plus:hover {
+    background-color: #e0e0e0;
+    color: #333;
+}
+.number-minus:active,
+.number-plus:active {
+    background-color: #ccc;
+    color: #000;
+}
+
+.total-product-in-basket-amount{
+    position: absolute;
+    right: 1%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+
 }
