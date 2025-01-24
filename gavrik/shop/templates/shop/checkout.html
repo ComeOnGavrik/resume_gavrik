@@ -14,26 +14,48 @@
                     <tbody>
                     {% for el in products_in_basket %}
                     <tr>
-                        <td style="    width: 245px;">
+                        <td style="width: 120px;">
                             {% for ph in products_in_basket_ph %}
                             {% if el.product.id == ph.product.id %}
                             <img src="{{ ph.image.url }}" class="img-card">
                             {% endif %}
                             {% endfor %}
                         </td>
-                        <td>
-                            {{el.product.name}}<br>
+                        <td style="    position: relative">
+                            <p style="position: absolute;top: 0%;left: 50%;transform: translateX(-50%);font-size: 20px;">
+                                {{ el.product.name }}</p>
 
 
-                            <input class="product-in-basket-nmb" value="{{ el.nmb }}" type="number" id="number"
-                                   name="product_in_basket_el_{{ el.id }}">
-<br>
-                            <span class="product-price">
+                            <!--                            <input class="product-in-basket-nmb" value="{{ el.nmb }}" type="number" id="number" -->
+                            <!--                                   name="product_in_basket_el_{{ el.id }}">-->
+                            <div class="number">
+                                <div class="number">
+                                    <button class="number-minus" type="button">-
+                                    </button>
+                                    <input class="product-in-basket-nmb" value="{{ el.nmb }}" type="number" id="number"
+                                           name="product_in_basket_el_{{ el.id }}" min="0" readonly>
+                                    <button class="number-plus" type="button" >+</button>
+                                </div>
+
+                                <script>
+                                    function changeValue(button, delta) {
+                                        const $container = $(button).closest('.number');
+                                        const $input = $container.find('input.product-in-basket-nmb');
+                                        let currentValue = parseInt($input.val()) || 0;
+                                        let newValue = currentValue + delta;
+                                        const min = parseInt($input.attr('min')) || 0;
+                                        if (newValue < min) newValue = min;
+                                        $input.val(newValue).trigger('change');
+                                    }
+                                </script>
+                            </div>
+
+                            <span class="product-price hidden">
                                         {{ el.price_per_item }}
                                     </span>
-<br>
+
                             <span class="total-product-in-basket-amount">
-                                        {{ el.total_price }}
+                                        {{ el.total_price }}$
                                     </span>
                         </td>
                     </tr>

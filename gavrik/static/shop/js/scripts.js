@@ -140,26 +140,39 @@ $(document).ready(function(){
 
     })
 
-    function calculatingBasketAmount(){
-        var total_order_amount = 0;
-        $('.total-product-in-basket-amount').each(function(){
-            console.log(parseFloat($(this).text().replace(',', '.')));
-            total_order_amount += parseFloat($(this).text().replace(',', '.'));
-        })
-        total_order_amount = total_order_amount.toFixed(2)
-        $('#total_order_amount').text(total_order_amount)
-        console.log('общая стоимость '+total_order_amount);
-    };
 
+    $(document).on('change', ".product-in-basket-nmb", function () {
+    var current_nmb = parseInt($(this).val()); // Получаем текущее количество
+    var current_tr = $(this).closest('td'); // Ищем ближайший родительский <td>
+    var current_price = parseFloat(current_tr.find('.product-price').text().replace(',', '.')); // Цена товара
+    var total_amount = current_nmb * current_price; // Общая сумма для текущего товара
+    current_tr.find('.total-product-in-basket-amount').text(total_amount.toFixed(2) + "$"); // Обновляем сумму
+    calculatingBasketAmount(); // Вызываем функцию для пересчета общей суммы корзины
+});
 
-    $(document).on('change', ".product-in-basket-nmb", function(){
-        var current_nmb = $(this).val();
-        var current_tr = $(this).closest('tr');
-        var current_price = parseFloat(current_tr.find('.product-price').text().replace(',', '.'));
-        var total_amount = current_nmb*current_price
-        current_tr.find('.total-product-in-basket-amount').text(total_amount)
-        calculatingBasketAmount();
-    })
+$(document).on('click', '.number-minus, .number-plus', function () {
+    var input = $(this).siblings('.product-in-basket-nmb'); // Находим input внутри блока .number
+
+    if ($(this).hasClass('number-minus')) {
+        input[0].stepDown(); // Уменьшаем значение
+    } else if ($(this).hasClass('number-plus')) {
+        input[0].stepUp(); // Увеличиваем значение
+    }
+
+    // Программно вызываем событие change для input
+    $(input).trigger('change');
+});
+
+function calculatingBasketAmount() {
+    var totalBasketAmount = 0;
+    $('.total-product-in-basket-amount').each(function () {
+        totalBasketAmount += parseFloat($(this).text().replace(',', '.')) || 0;
+    });
+
+        $('#total_order_amount').text(totalBasketAmount.toFixed(2))
+    // Здесь вы можете обновить общую сумму корзины в нужном месте
+    console.log("Total Basket Amount: ", totalBasketAmount.toFixed(2));
+}
 
     calculatingBasketAmount()
 
