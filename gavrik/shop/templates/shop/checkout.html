@@ -34,7 +34,7 @@
                                     </button>
                                     <input class="product-in-basket-nmb" value="{{ el.nmb }}" type="number" id="number"
                                            name="product_in_basket_el_{{ el.id }}" min="0" readonly>
-                                    <button class="number-plus" type="button" >+</button>
+                                    <button class="number-plus" type="button">+</button>
                                 </div>
 
                                 <script>
@@ -64,13 +64,14 @@
 
                     </tbody>
                 </table>
-
+<br>
+                <div class="text-right" style="text-align: right;">
+                    <b>Сумма заказа: </b> <span id="total_order_amount"></span>$
+                </div>
             </div>
 
             <div class="col-lg-6" style="position: relative">
-                <div class="form-group" style="position: absolute;
-                    left: 50%;
-                    transform: translate(-50%, 0%);">
+                <div class="form-group" style="">
                     <table class="contact-table">
                         <tbody>
                         <tr>
@@ -113,9 +114,6 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="text-right" style="text-align: right;">
-                <b>Сумма заказа: </b> <span id="total_order_amount"></span>
             </div>
 
 
