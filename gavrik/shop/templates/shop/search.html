@@ -5,34 +5,38 @@
 
 
 {% block content-shop %}
-<div class="section1">
-    {% if results %}
-        <h2>Результаты поиска по запрсу "{{ search_line }}":</h2>
-    {% else %}
-        <h2>Нет товаров, соответствующих запросу "{{ search_line }}".</h2>
-    <div class="col-lg-12 text-center">
-        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- Круглая голова -->
-            <circle cx="50" cy="50" r="40" fill="#f5f5f700" stroke="#ffffff9c" />
+<div class="container">
+    <div class="col-lg-12">
+        <div class="section1">
+            {% if results %}
+            <h2>Результаты поиска по запрсу "{{ search_line }}":</h2>
+            {% else %}
+            <h2>Нет товаров, соответствующих запросу "{{ search_line }}".</h2>
+            <div class="col-lg-12 text-center">
+                <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Круглая голова -->
+                    <circle cx="50" cy="50" r="40" fill="#f5f5f700" stroke="#ffffff9c"/>
 
-            <!-- Глаза -->
-            <circle cx="35" cy="40" r="5" fill="#ffffff9c" />
-            <circle cx="65" cy="40" r="5" fill="#ffffff9c" />
+                    <!-- Глаза -->
+                    <circle cx="35" cy="40" r="5" fill="#ffffff9c"/>
+                    <circle cx="65" cy="40" r="5" fill="#ffffff9c"/>
 
-            <circle cx="35" cy="41" r="2" fill="#2c2c2c" />
-            <circle cx="65" cy="41" r="2" fill="#2c2c2c" />
+                    <circle cx="35" cy="41" r="2" fill="#2c2c2c"/>
+                    <circle cx="65" cy="41" r="2" fill="#2c2c2c"/>
 
-            <!-- Грустный рот -->
-            <path d="M35 73 Q50 55, 65 73" stroke="#ffffff9c" stroke-width="2" fill="transparent" />
-        </svg>
-    </div>
-    {% endif %}
-    <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
-            {% for el in results %}
-                {% include 'shop/product_item.html' %}
-            {% endfor %}
+                    <!-- Грустный рот -->
+                    <path d="M35 73 Q50 55, 65 73" stroke="#ffffff9c" stroke-width="2" fill="transparent"/>
+                </svg>
+            </div>
+            {% endif %}
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
+                    {% for el in results %}
+                    {% include 'shop/product_item.html' %}
+                    {% endfor %}
 
+                </div>
+            </div>
         </div>
     </div>
 </div>

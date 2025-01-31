@@ -343,7 +343,7 @@ input[type=tel]::placeholder {
 .contact-table {
     border-collapse: separate; /* Устанавливаем разделение ячеек */
     border-spacing: 4px; /* Расстояние между ячейками */
-    width: 420px;
+    width: 100%;
     box-shadow: 0px 0px 12px 7px rgba(255, 255, 255, 0.5);
     border-radius: 8px;
     background-color: #1a1a1a;
@@ -417,7 +417,7 @@ input[type=tel]::placeholder {
     display: inline-flex;
     align-items: center;
     position: relative;
-    width: 120px;
+    width: 75px;
     border: 1px solid #ddd;
     border-radius: 4px;
     overflow: hidden;
@@ -433,7 +433,6 @@ input[type=tel]::placeholder {
     display: block;
     height: 25px; /* Уменьшено с 40px */
     width: 100%;
-    padding: 0 35px; /* Оставляем место для кнопок */
     margin: 0;
     box-sizing: border-box;
     text-align: center;
@@ -461,7 +460,7 @@ input[type=tel]::placeholder {
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 35px; /* Уменьшено с 40px */
+    width: 20px; /* Уменьшено с 40px */
     padding: 0;
     display: flex;
     align-items: center;
