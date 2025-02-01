@@ -10,7 +10,7 @@
     <form method="post">
         {% csrf_token %}
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6" style="padding-bottom: 40px;">
                 <table class="table-prods">
                     <tbody>
                     {% for el in products_in_basket %}
@@ -66,7 +66,6 @@
                 </table>
 
             </div>
-
             <div class="col-lg-6" style="position: relative">
                 <div class="form-group" style="">
                     <table class="contact-table">
