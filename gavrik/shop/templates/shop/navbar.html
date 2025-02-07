@@ -1,4 +1,7 @@
-<div class="nav-line-black" style="background-color: #181818; width:100%">
+
+<div class="nav-line-black" style="background-color: #181818; width:100%;
+    position: fixed;
+    z-index: 10;" >
     <div class="container">
         <div class="col-lg-12">
             <nav class="navbar navbar-expand-lg navbar navbar-dark">
@@ -32,7 +35,9 @@
                                 {% endfor %}
                             </div>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" style="
+    position: relative;
+">
 
                             <div class="basket-container">
                                 <a class="nav-link" href="{% url 'shop:checkout' %}"><i
@@ -40,9 +45,8 @@
                                     <span id="basket_total_amount"></span>
                                     <span id="basket_total_nmb">
                                   {% if products_total_nmb %}
-                                    ( {{ products_total_nmb }} )
+                                    {{ products_total_nmb }}
                                   {% else %}
-                                    (0)
                                   {% endif %}
 
                               </span>
@@ -62,7 +66,9 @@
                                 </ul>
                             </div>
                         </li>
-                        <li>
+                        <li style="
+    padding-left: 20px;
+">
                             <form class="form-inline ml-auto" method="get" action="{% url 'search' %}"
                                   style="display: flex">
                                 <input class="form-control mr-2" type="search" name="query" placeholder="Поиск"

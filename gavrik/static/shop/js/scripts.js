@@ -47,7 +47,7 @@ $(document).ready(function(){
                         console.log("OK");
                         console.log(data.products_total_nmb);
                         if (data.products_total_nmb || data.products_total_nmb == 0){
-                            $('#basket_total_nmb').text("( " + data.products_total_nmb + " )");
+                            $('#basket_total_nmb').html("<span class='circle'>" + data.products_total_nmb + "</span>");
                             console.log("Вывод словаря:");
                             console.log(data.products);
                             $('.basket-items ul').empty();
@@ -109,25 +109,17 @@ $(document).ready(function(){
     });
 
 
-    function showingBasket(){
-        $('.basket-items').toggleClass('hidden');
-    }
-
-
-//    $('.basket-container').on('click', function(e) {
+//    function showingBasket(){
+//        $('.basket-items').toggleClass('hidden');
+//    }
+//
+//
+//
+//    $('.basket-container').mouseover(function() {
 //        showingBasket();
 //    })
-
-    $('.basket-container').mouseover(function() {
-        showingBasket();
-    })
-
-
-//     $('.basket-container').mouseout(function() {
-//        $('.basket-items').addClass('hidden');
-//    })
-
-
+//
+//
 
 
     $(document).on('click', '.delete-item', function(e) {

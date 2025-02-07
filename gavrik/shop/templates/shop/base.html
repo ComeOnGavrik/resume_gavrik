@@ -21,6 +21,7 @@
 <div class="wrapper" style="min-height: 815px;">
     <div class="wrapper-content">
          {% include 'shop/navbar.html' %}
+        <div style="width: 100%; height: 56px; z-index:1"></div>
             <form id="form-csrf" class="form-inline" action="{% url 'shop:basket_adding' %}" style="display: flex">
                     {% csrf_token %}
             </form>

@@ -24,7 +24,13 @@
                         </td>
                         <td style="    position: relative">
 
-                                        <a class="delete-item" href="" data-product_id="{{ el.id }}">x</a>
+                            <a class="delete-item" href="" data-product_id="{{ el.id }}" style="
+                                                                                                position: absolute;
+                                                                                                top: 6px;
+                                                                                                right: 18px;
+                                                                                                color: #b7b7b7">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </a>
                             <p style="position: absolute;top: 0%; font-size: 18px;">
                                 {{ el.product.name }}</p>
 

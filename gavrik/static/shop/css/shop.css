@@ -507,3 +507,18 @@ input[type=tel]::placeholder {
         font-size: 14px;
     }
 }
+
+.circle {
+    position: absolute;
+    top: 10px;
+    right: -15px;
+    width: 17px;
+    height: 20px;
+    border-radius: 43%;
+    background-color: #df0000;
+    color: white;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
