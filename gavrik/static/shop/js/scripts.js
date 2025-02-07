@@ -136,8 +136,9 @@ $(document).ready(function(){
         console.log("Вывод в консоль при удалении id=" + product_id)
         nmb = 0;
         basketUpdating(product_id, nmb, is_delete=true);
-        showingBasket();
-
+        setTimeout(() => {
+        location.reload(true);
+        }, 500);
     })
 
 
