@@ -6,7 +6,6 @@ from .models import ProductInBasket, Order, Status, ProductInOrder, OrderACall
 from products.models import ProductImage
 from .forms import CheckoutContactsForm, OrderACallForm
 
-
 def basket_adding(request):
     print('Вызвался баскет адинг2')
     return_dict = dict()
@@ -53,7 +52,6 @@ def basket_adding(request):
 
 
 def checkout(request):
-    # product_images = ProductImage.objects.filter(is_active=True, is_main=True, product__is_active=True)
     print(request.user)
     form = CheckoutContactsForm(request.POST or None)
     if not request.user.is_authenticated:
@@ -91,9 +89,10 @@ def checkout(request):
                     print(id_el[1], '---', value)
                     prod = ProductInBasket.objects.get(id=id_el[1])
                     prod.nmb = value
+                    prod.is_active = False
                     prod.save(force_update=True)
                     product_in_order = ProductInOrder.objects.create(order=order, product=prod.product, nmb=value)
-
+                    prod.is_active = False
             return redirect('shop_home')
         else:
             print("mistake")

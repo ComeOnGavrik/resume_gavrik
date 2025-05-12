@@ -7,6 +7,21 @@
 {% if products_in_basket %}
 <h1 style="text-align: center">Товары в корзине</h1>
 <div class="container">
+    <script>
+    $(document).ready(function() {
+        $('form').on('submit', function(e) {
+            e.preventDefault(); // Предотвращаем отправку формы
+
+            // Показываем всплывающее окно через 2 секунды
+
+                alert('Спасибо за заказ, мы вам перезвоним');
+
+
+            // Если нужно отправить форму после всплывающего окна, раскомментируйте следующую строку
+            this.submit();
+        });
+    });
+</script>
     <form method="post">
         {% csrf_token %}
         <div class="row">
