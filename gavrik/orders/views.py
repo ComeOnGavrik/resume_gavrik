@@ -78,10 +78,18 @@ def checkout(request):
         print(data)
         if form.is_valid():
             print("yes")
-            order = Order.objects.create(customer=request.user, customer_name=form.cleaned_data["user_name"],
-                                         customer_phone=form.cleaned_data["user_phone"],
-                                         customer_address=form.cleaned_data["user_address"],
-                                         comments=form.cleaned_data["user_comment"], status=Status.objects.all()[0])
+            if request.user.is_authenticated:
+                print(1)
+                order = Order.objects.create(customer=request.user, customer_name=form.cleaned_data["user_name"],
+                                             customer_phone=form.cleaned_data["user_phone"],
+                                             customer_address=form.cleaned_data["user_address"],
+                                             comments=form.cleaned_data["user_comment"], status=Status.objects.all()[0])
+            else:
+                print(0)
+                order = Order.objects.create(customer_name=form.cleaned_data["user_name"],
+                                             customer_phone=form.cleaned_data["user_phone"],
+                                             customer_address=form.cleaned_data["user_address"],
+                                             comments=form.cleaned_data["user_comment"], status=Status.objects.all()[0])
 
             for name, value in data.items():
                 if name.startswith("product_in_basket_el_"):
